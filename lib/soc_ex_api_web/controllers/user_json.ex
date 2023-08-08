@@ -20,11 +20,10 @@ defmodule SocExApiWeb.UserJSON do
       id: user.id,
       first_name: user.first_name,
       last_name: user.last_name,
+      full_name: user.first_name <> " " <> user.last_name,
       email: user.email,
       username: user.username,
-      password_hash: user.password_hash,
-      is_online: user.is_online,
-      is_deleted: user.is_deleted
+      is_online: user.is_online
     }
   end
 end
