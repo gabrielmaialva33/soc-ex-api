@@ -53,8 +53,8 @@ jobs:
           fi
           cd $DIR &&
           mix deps.get && mix ecto.setup && mix deps.compile && mix ecto.migrate &&
-          # keep running the server in the background
-          bash -c "source /home/soc_ex/.asdf/asdf.sh && mix phx.server" & disown &&
+          tmux kill-session -t soc_ex_api || true &&
+          tmux new-session -d -s soc_ex_api "PORT=4000 mix phx.server" && tmux detach &&
           echo "Deployed successfully. 🚀"
           '
           
