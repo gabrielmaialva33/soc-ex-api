@@ -51,11 +51,8 @@ jobs:
           else
             cd soc_ex_api && git checkout main && git fetch --all && git reset --hard origin/main && git pull origin main
           fi
-          mix deps.get && mix ecto.setup && mix phx.compile && ecto.migrate &&
-          chmod +x service.sh && ./service.sh &&
-          sudo systemctl daemon-reload &&
-          sudo systemctl enable soc_ex.service &&
-          sudo systemctl restart soc_ex.service &&
+          mix deps.get && mix ecto.setup && mix deps.compile && ecto.migrate &&
+          mix phx.server & disown &&
           echo "Deployed successfully. 🚀"
           '
           
