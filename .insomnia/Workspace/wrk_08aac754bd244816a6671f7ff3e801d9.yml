@@ -1,9 +1,8 @@
 _id: wrk_08aac754bd244816a6671f7ff3e801d9
 type: Workspace
 parentId: null
-modified: 1683563734321
+modified: 1691643922296
 created: 1683563734321
 name: base-streaming-server-v2.git
-description: Insomnia Workspace for
-  https://gabrielyazo@bitbucket.org/yazo-app/base-streaming-server-v2.git}
+description: "### Documentation for the SocEx API"
 scope: design
