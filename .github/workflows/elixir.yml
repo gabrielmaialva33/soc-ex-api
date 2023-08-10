@@ -53,12 +53,12 @@ jobs:
           fi
           cd $DIR &&
           mix deps.get && mix ecto.setup && mix deps.compile && mix ecto.migrate &&
-          # check if the screen is running
+          # check if the screen is running and kill it if it is running
           if screen -list | grep -q "soc_ex_api"; then
               screen -X -S soc_ex_api quit
-          else
-              screen -d -m -S soc_ex_api bash -c "PORT=4000 mix phx.server" &&
-          fi &&
+          fi
+          # start the screen
+          screen -dmS soc_ex_api
           echo "Deployed successfully. 🚀"
           '
           
