@@ -10,6 +10,8 @@ info:
 servers:
   - url: http://localhost:4000
     description: Local server
+  - url: https://api.mrootx.shop
+    description: Development server
 
 tags:
   - name: Users
