@@ -51,7 +51,28 @@ jobs:
           else
             cd soc_ex_api && git checkout main && git fetch --all && git reset --hard origin/main && git pull origin main
           fi
-          mix deps.get && mix ecto.setup && mix phx.compile && ecto.migrate && mix phx.server
+          mix deps.get && mix ecto.setup && mix phx.compile && ecto.migrate &&
+          if [ ! -f /etc/systemd/system/soc_ex.service ]
+            then
+              sudo bash -c "cat > /etc/systemd/system/soc_ex.service" <<EOF
+              [Unit]
+              Description=Phoenix Server
+              After=network.target
+              
+              [Service]
+              Type=simple
+              User=soc_ex
+              WorkingDirectory=/home/soc_ex/soc_ex_api
+              ExecStart=/usr/bin/mix phx.server
+              Restart=on-failure
+              
+              [Install]
+              WantedBy=multi-user.target
+              EOF
+          fi
+          sudo systemctl daemon-reload &&
+          sudo systemctl enable soc_ex.service &&
+          sudo systemctl restart soc_ex.service &&
           echo "Deployed successfully. 🚀"
           '
           
