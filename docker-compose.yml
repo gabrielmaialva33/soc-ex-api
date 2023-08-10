@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: soc_ex_api
+    restart: always
+    environment:
+      MIX_ENV: docker
+      PG_USER: postgres
+      PG_HOSTNAME: postgres
+      PG_PORT: 5432
+      PG_PASSWORD: postgres
+      PG_DATABASE: soc_ex_db
+      DATABASE_URL: ecto://postgres:postgres@postgres/soc_ex_db
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+    networks:
+      - soc_ex_net
+
+  postgres:
+    image: postgres:latest
+    container_name: soc_ex_db
+    restart: always
+    healthcheck:
+      test: [ 'CMD', 'pg_isready', '-q', '-d', 'postgres', '-U', 'postgres' ]
+      interval: 10s
+      timeout: 45s
+      retries: 10
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+    ports:
+      - "5432:5432"
+    expose:
+      - "5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - soc_ex_net
+
+networks:
+  soc_ex_net:
+    driver: bridge
+volumes:
+  pgdata:

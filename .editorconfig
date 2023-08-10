@@ -1,0 +1,33 @@
+# EditorConfig helps developers define and maintain consistent
+# coding styles between different editors and IDEs
+
+# Top-most EditorConfig file
+root = true
+
+# Unix-style newlines
+[*]
+end_of_line = lf
+insert_final_newline = true
+
+# Match all files
+[*.{ex,exs,erl}]
+charset = utf-8
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 2
+
+# Match Elixir code files
+[*.ex]
+indent_size = 2
+
+# Match EEx (embedded Elixir) files
+[*.eex]
+indent_size = 2
+
+# Match configuration files
+[*.{conf,config}]
+indent_size = 2
+
+# Match Markdown files
+[*.md]
+trim_trailing_whitespace = false

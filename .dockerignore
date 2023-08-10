@@ -1,0 +1,14 @@
+_build/
+deps/
+.elixir_ls/
+.git
+.github
+.gitignore
+.editorconfig
+.circleci
+helm/*
+terragrunt.hcl
+README.md
+docker-compose*
+.idea
+.vscode
