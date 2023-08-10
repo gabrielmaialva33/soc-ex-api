@@ -52,7 +52,10 @@ jobs:
             cd soc_ex_api && git checkout main && git fetch --all && git reset --hard origin/main && git pull origin main
           fi
           cd $DIR &&
-          mix deps.get && mix ecto.setup && mix deps.compile && mix ecto.migrate &&
+          # Install dependencies, compile
+          mix deps.get && mix ecto.setup && mix deps.compile &&
+          # Drop the existing database and create a new one
+          mix ecto.drop && mix ecto.create && mix ecto.migrate &&
           # Check if the app is running and kill it
           if [ $(tmux ls | grep soc_ex_api | wc -l) -gt 0 ]
             then
