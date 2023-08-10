@@ -42,8 +42,7 @@ jobs:
           ssh -o StrictHostKeyChecking=no -i private_key soc_ex@20.197.248.21 '
           DIR=/home/soc_ex/soc_ex_api
           cd /home/soc_ex
-          source ~/.profile &&
-          source ~/.bashrc &&
+          source ~/.profile && source ~/.bashrc &&
           source /home/soc_ex/.asdf/asdf.sh &&
           if [ ! -d $DIR ]
             then
@@ -54,7 +53,6 @@ jobs:
           fi
           cd $DIR &&
           mix deps.get && mix ecto.setup && mix deps.compile && mix ecto.migrate &&
-          # screen -d -m -S soc_ex_api bash -c "mix phx.server" &&
           screen -X -S soc_ex_api quit &&
           screen -d -m -S soc_ex_api bash -c "PORT=4000 mix phx.server" &&
           echo "Deployed successfully. 🚀"
