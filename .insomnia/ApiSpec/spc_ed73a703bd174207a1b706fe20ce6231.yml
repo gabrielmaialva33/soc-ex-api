@@ -1,9 +1,9 @@
-_id: spc_9a937656ad9d49d7bedbef6e17843b98
+_id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
-parentId: wrk_1a7de667dc624306b7ab84bdfe569d9c
-modified: 1683169067449
-created: 1683162048696
-fileName: Yazo App
+parentId: wrk_08aac754bd244816a6671f7ff3e801d9
+modified: 1683564056802
+created: 1683563734321
+fileName: base-streaming-server-v2.git
 contents: >
   openapi: 3.0.3
 
@@ -101,7 +101,7 @@ contents: >
             description: 'Product Identifier of identification of the product that is using the API.'
             example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         responses:
           '200':
             description: auth config response object
@@ -144,7 +144,7 @@ contents: >
             description: 'Product Identifier of identification of the product that is using the API.'
             example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         requestBody:
           description: Update auth config
           content:
@@ -194,7 +194,7 @@ contents: >
             description: 'Product Identifier of identification of the product that is using the API.'
             example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         responses:
           '200':
             description: list of users response object
@@ -230,7 +230,7 @@ contents: >
         tags:
           - Admin - Banner
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -273,7 +273,7 @@ contents: >
         tags:
           - Admin - Banner
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -322,7 +322,7 @@ contents: >
         tags:
           - Admin - Banner
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: banner_id
             in: path
@@ -385,7 +385,7 @@ contents: >
               type: string
               example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         requestBody:
           description: Update banner
           content:
@@ -440,7 +440,7 @@ contents: >
               type: string
               example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         responses:
           '200':
             description: banner response object
@@ -474,7 +474,7 @@ contents: >
         tags:
           - Admin - Banner
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -532,7 +532,7 @@ contents: >
         tags:
           - Admin - Banner
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -598,7 +598,7 @@ contents: >
         tags:
           - User - Banner
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -640,7 +640,7 @@ contents: >
         tags:
           - User - Banner
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: banner_id
             in: path
@@ -690,7 +690,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -744,7 +744,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: partner_id
             in: path
@@ -792,7 +792,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -846,7 +846,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: schedule_id
             in: path
@@ -894,7 +894,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -948,7 +948,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: speaker_id
             in: path
@@ -996,7 +996,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -1050,7 +1050,7 @@ contents: >
         tags:
           - User - Bookmark
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: partner_product_id
             in: path
@@ -1100,7 +1100,7 @@ contents: >
         tags:
           - Admin - Cadaster Item
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -1143,7 +1143,7 @@ contents: >
         tags:
           - Admin - Cadaster Item
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -1191,7 +1191,7 @@ contents: >
         tags:
           - Admin - Cadaster Item
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: cadaster_item_id
             in: path
@@ -1232,7 +1232,7 @@ contents: >
         tags:
           - Admin - Cadaster Item
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: cadaster_item_id
             in: path
@@ -1280,7 +1280,7 @@ contents: >
         tags:
           - Admin - Cadaster Item
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -1328,7 +1328,7 @@ contents: >
         tags:
           - User - Cadaster Item
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -1372,7 +1372,7 @@ contents: >
         tags:
           - User - Cadaster Item
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: attribute_ref
             in: query
@@ -1452,7 +1452,7 @@ contents: >
             example: 'Category name'
           # Add other query parameters as needed
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         responses:
           '200':
             description: A list of categories
@@ -1471,7 +1471,7 @@ contents: >
         tags:
           - Admin - Category
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         parameters:
           - name: Hub-Event-Id
             in: header
@@ -1493,7 +1493,7 @@ contents: >
               application/json:
                 schema:
                   $ref: '#/components/schemas/Category' # You need to define the Category schema
-    /admin/categories/{id}:
+    /admin/categories/{category_id}:
       get:
         summary: Get a Category by ID
         operationId: admin.categories.get
@@ -1503,7 +1503,7 @@ contents: >
           - Admin - Category
         parameters:
           - in: path
-            name: id
+            name: category_id
             required: true
             schema:
               type: integer
@@ -1517,7 +1517,7 @@ contents: >
               type: string
               example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         responses:
           '200':
             description: The requested category
@@ -1535,7 +1535,7 @@ contents: >
           - Admin - Category
         parameters:
           - in: path
-            name: id
+            name: category_id
             required: true
             schema:
               type: integer
@@ -1549,7 +1549,7 @@ contents: >
               type: string
               example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         requestBody:
           required: true
           content:
@@ -1563,7 +1563,7 @@ contents: >
               application/json:
                 schema:
                   $ref: '#/components/schemas/Category' # You need to define the Category schema
-    /admin/categories/{id}/order:
+    /admin/categories/{category_id}/order:
       patch:
         summary: Edit the order of a Category
         operationId: admin.categories.edit.order
@@ -1573,7 +1573,7 @@ contents: >
           - Admin - Category
         parameters:
           - in: path
-            name: id
+            name: category_id
             required: true
             schema:
               type: integer
@@ -1587,7 +1587,7 @@ contents: >
               type: string
               example: '1'
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         requestBody:
           required: true
           description: |
@@ -1603,7 +1603,7 @@ contents: >
               application/json:
                 schema:
                   $ref: '#/components/schemas/Category'
-    /admin/categories/{id}/delete:
+    /admin/categories/{category_id}/delete:
       put:
         summary: Delete a Category
         operationId: admin.categories.delete
@@ -1613,7 +1613,7 @@ contents: >
           - Admin - Category
         parameters:
           - in: path
-            name: id
+            name: category_id
             required: true
             schema:
               type: integer
@@ -1637,9 +1637,9 @@ contents: >
                     type: array
                     items:
                       type: integer
-                    example: [ 1, 2 ]
+                    example: [1, 2]
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         responses:
           '200':
             description: Category deleted successfully
@@ -1706,7 +1706,7 @@ contents: >
               - 1
               - 2
         security:
-          - bearerToken: [ ]
+          - bearerToken: []
         responses:
           '200':
             description: A list of categories
@@ -1716,6 +1716,270 @@ contents: >
                   type: array
                   items:
                     $ref: '#/components/schemas/Category' # You need to define the Category schema
+    /user/categories/{category_id}:
+      get:
+        summary: Get a Category
+        operationId: user.categories.get
+        description: |
+          Returns a single category
+        tags:
+          - User - Category
+        parameters:
+          - in: path
+            name: category_id
+            required: true
+            schema:
+              type: integer
+              format: int64
+            example: 1
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Category' # You need to define the Category schema
+
+    # dashboard
+    /admin/dashboard/audience:
+      get:
+        summary: Get audience
+        operationId: admin.dashboard.audience
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AudiencePayloadResponse'
+    /admin/dashboard/bookmark:
+      get:
+        summary: Get bookmark
+        operationId: admin.dashboard.bookmark
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/BookmarkPayloadResponse'
+    /admin/dashboard/content:
+      get:
+        summary: Get content
+        operationId: admin.dashboard.content
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/ContentPayloadResponse'
+    /admin/dashboard/interactions:
+      get:
+        summary: Get interactions
+        operationId: admin.dashboard.interactions
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/InteractionsPayloadResponse'
+    /admin/dashboard/lead:
+      get:
+        summary: Get last access
+        operationId: admin.dashboard.last-access
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/LeadPayloadResponse'
+    /admin/dashboard/social:
+      get:
+        summary: Get social
+        operationId: admin.dashboard.social
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/SocialItemCountResponse'
+    /admin/dashboard/social/most-interacted-posts:
+      get:
+        summary: Get most interacted posts
+        operationId: admin.dashboard.social.most-interacted-posts
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+          - name: start_date
+            in: query
+            description: Start date for filtering posts (optional)
+            schema:
+              type: string
+            example: '2023-05-01'
+          - name: end_date
+            in: query
+            description: End date for filtering posts (optional, defaults to current date)
+            schema:
+              type: string
+            example: '2023-05-04'
+        security:
+          - bearerToken: []
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/MostInteractedPostsResponse'
+    /admin/dashboard/social/most-interactive-users:
+      get:
+        summary: Get most interactive users
+        operationId: admin.dashboard.social.most-interactive-users
+        description: |
+          Returns a single category
+        tags:
+          - Admin - Dashboard
+        security:
+          - bearerToken: []
+        parameters:
+          - name: Hub-Event-Id
+            in: header
+            description: Hub event id
+            required: true
+            schema:
+              type: string
+              example: '1'
+          - name: start_date
+            in: query
+            description: Start date for filtering users (optional)
+            schema:
+              type: string
+            example: '2023-05-01'
+          - name: end_date
+            in: query
+            description: End date for filtering users (optional, defaults to current date)
+            schema:
+              type: string
+            example: '2023-05-04'
+        responses:
+          '200':
+            description: The requested category
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/GetMostInteractiveUsersResponse'
 
   tags:
     - name: Session
@@ -1730,6 +1994,8 @@ contents: >
       description: Operations about category for admin
     - name: Admin - Category
       description: Operations about category
+    - name: Admin - Dashboard
+      description: Operations about dashboard
 
     # USER TAGS
     - name: User - Auth Config
@@ -2658,13 +2924,13 @@ contents: >
             type: string
           level:
             type: string
-            enum: [ silver, gold, platinum ]
+            enum: [silver, gold, platinum]
           order:
             type: integer
             format: int32
           type:
             type: string
-            enum: [ partner, broadcast_room ]
+            enum: [partner, broadcast_room]
           menu_item_id:
             type: integer
             format: int64
@@ -2732,7 +2998,6 @@ contents: >
             ingles_2: 'Edited Category'
             espanhol_3: 'Categoría'
             search_translation: 'Categoria Editada'
-
       ICategory.Types:
         type: string
         enum:
@@ -2756,7 +3021,373 @@ contents: >
             type: integer
             format: int64
 
-      # misc
+      # dashboard schemas
+      AudiencePayloadResponse:
+        type: object
+        properties:
+          registered_user_count:
+            type: integer
+            format: int32
+            example: 6
+          register_user_in_last_hour_count:
+            type: integer
+            format: int32
+            example: 6
+          online_user_count:
+            type: integer
+            format: int32
+            example: 0
+          access_count:
+            type: integer
+            format: int32
+            example: 0
+          registered_user_chart_payload:
+            type: array
+            items:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  example: '2023-05-04T03:05:28.133Z'
+                count:
+                  type: string
+                  example: '7'
+        example:
+          registered_user_count: 6
+          register_user_in_last_hour_count: 6
+          online_user_count: 0
+          access_count: 0
+          registered_user_chart_payload:
+            - date: '2023-05-04T03:05:28.133Z'
+              count: '7'
+            - date: '2023-05-04T04:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T05:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T06:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T07:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T08:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T09:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T10:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T11:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T12:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T13:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T14:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T15:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T16:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T17:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T18:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T19:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T20:05:28.133Z'
+              count: '0'
+            - date: '2023-05-04T21:05:28.133Z'
+              count: '0'
+      BookmarkPayloadResponse:
+        type: object
+        properties:
+          bookmarks:
+            type: object
+            properties:
+              schedule_count:
+                type: integer
+                format: int32
+                example: 13
+              partner_count:
+                type: integer
+                format: int32
+                example: 2
+              product_count:
+                type: integer
+                format: int32
+                example: 0
+              speaker_count:
+                type: integer
+                format: int32
+                example: 0
+          more_bookmarked_schedules:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  format: int32
+                  example: 2
+                title:
+                  type: object
+                  properties:
+                    ingles_2:
+                      type: string
+                      example: ''
+                    espanhol_3:
+                      type: string
+                      example: ''
+                    portugues_1:
+                      type: string
+                      example: 'Dia 1'
+                    search_translation:
+                      type: string
+                      example: '   Dia 1'
+                start_time:
+                  type: string
+                  format: date-time
+                  example: '2023-03-01T15:46:00.000+00:00'
+                meta:
+                  type: object
+                  properties:
+                    bookmarks_count:
+                      type: string
+                      example: '5'
+                    is_bookmarked:
+                      type: boolean
+                      example: false
+        example:
+          bookmarks:
+            schedule_count: 13
+            partner_count: 2
+            product_count: 0
+            speaker_count: 0
+          more_bookmarked_schedules:
+            - id: 2
+              title:
+                ingles_2: ''
+                espanhol_3: ''
+                portugues_1: 'Dia 1'
+                search_translation: '   Dia 1'
+              start_time: '2023-03-01T15:46:00.000+00:00'
+              meta:
+                bookmarks_count: '5'
+                is_bookmarked: false
+      ContentPayloadResponse:
+        type: object
+        properties:
+          readings:
+            type: object
+            properties:
+              read_qrcode_count:
+                type: integer
+                format: int32
+                example: 26
+          quizzes:
+            type: object
+            properties:
+              created_quiz_count:
+                type: integer
+                format: int32
+                example: 0
+              quiz_answer_count:
+                type: integer
+                format: int32
+                example: 12
+          notifications:
+            type: object
+            properties:
+              sended_notification_count:
+                type: integer
+                format: int32
+                example: 116
+              open_notification_count:
+                type: integer
+                format: int32
+                example: 238
+        example:
+          readings:
+            read_qrcode_count: 26
+          quizzes:
+            created_quiz_count: 0
+            quiz_answer_count: 12
+          notifications:
+            sended_notification_count: 116
+            open_notification_count: 238
+      InteractionsPayloadResponse:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            format: int32
+            example: 0
+          in_last_hour:
+            type: object
+            properties:
+              post_count:
+                type: integer
+                format: int32
+                example: 0
+              comment_count:
+                type: integer
+                format: int32
+                example: 0
+              reaction_count:
+                type: integer
+                format: int32
+                example: 0
+              message_count:
+                type: integer
+                format: int32
+                example: 0
+              connection_count:
+                type: integer
+                format: int32
+                example: 0
+              lead_count:
+                type: integer
+                format: int32
+                example: 0
+          chart_payload:
+            type: array
+            items:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  example: '2022-07-04T02:59:59.999Z'
+                count:
+                  type: string
+                  example: '0'
+      LeadPayloadResponse:
+        type: object
+        properties:
+          total_count:
+            type: integer
+            format: int32
+            example: 40
+          in_last_hour:
+            type: object
+            properties:
+              post_count:
+                type: integer
+                format: int32
+                example: 0
+              comment_count:
+                type: integer
+                format: int32
+                example: 0
+              reaction_count:
+                type: integer
+                format: int32
+                example: 0
+              message_count:
+                type: integer
+                format: int32
+                example: 0
+              connection_count:
+                type: integer
+                format: int32
+                example: 0
+              lead_count:
+                type: integer
+                format: int32
+                example: 0
+          chart_payload:
+            type: array
+            items:
+              type: object
+              properties:
+                date:
+                  type: string
+                  format: date-time
+                  example: '2023-05-01T01:59:59.999Z'
+                count:
+                  type: string
+                  example: '0'
+      SocialItemCountResponse:
+        type: object
+        properties:
+          post_count:
+            type: integer
+            format: int32
+            example: 0
+          comment_count:
+            type: integer
+            format: int32
+            example: 0
+          reaction_count:
+            type: integer
+            format: int32
+            example: 0
+          message_count:
+            type: integer
+            format: int32
+            example: 214
+          connection_count:
+            type: integer
+            format: int32
+            example: 11
+        example:
+          post_count: 0
+          comment_count: 0
+          reaction_count: 0
+          message_count: 214
+          connection_count: 11
+      MostInteractedPostsResponse:
+        type: object
+        properties:
+          most_interacted_posts:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: number
+                text:
+                  type: string
+                status:
+                  type: string
+                meta:
+                  type: object
+                  properties:
+                    post_comments_count:
+                      type: string
+                    post_reactions_count:
+                      type: string
+        example:
+          most_interacted_posts:
+            - id: 1
+              text: Welcome
+              status: disabled
+              meta:
+                post_comments_count: '0'
+                post_reactions_count: '0'
+      GetMostInteractiveUsersResponse:
+        type: object
+        properties:
+          users_with_most_interactions:
+            type: array
+            items:
+              type: object
+              properties:
+                id:
+                  type: number
+                name:
+                  type: string
+                avatar:
+                  type: string
+                interactions_count:
+                  type: string
+        example:
+          users_with_most_interactions:
+            - id: 1
+              name: Yazo
+              avatar: ''
+              interactions_count: '2'
+
+      # misc schemas
       Login:
         type: object
         properties:

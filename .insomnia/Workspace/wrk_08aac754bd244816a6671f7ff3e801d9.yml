@@ -3,7 +3,7 @@ type: Workspace
 parentId: null
 modified: 1683563734321
 created: 1683563734321
-name: soc_ex_api
+name: base-streaming-server-v2.git
 description: Insomnia Workspace for
-  https://github.com/gabrielmaialva33/soc_ex_api.git}
+  https://gabrielyazo@bitbucket.org/yazo-app/base-streaming-server-v2.git}
 scope: design
