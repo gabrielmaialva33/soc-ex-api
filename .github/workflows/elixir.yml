@@ -52,7 +52,8 @@ jobs:
             cd soc_ex_api && git checkout main && git fetch --all && git reset --hard origin/main && git pull origin main
           fi
           mix deps.get && mix ecto.setup && mix phx.compile && ecto.migrate && mix phx.server
-          echo "Deployed successfully."
+          echo "Deployed successfully. 🚀"
+          '
           
           
           
