@@ -44,6 +44,8 @@ jobs:
           cd /home/soc_ex
           source ~/.profile &&
           source ~/.bashrc &&
+          source ~/.bash_profile &&
+          source /home/soc_ex/.asdf/asdf.sh &&
           if [ ! -d $DIR ]
             then
                 git clone https://github.com/gabrielmaialva33/soc_ex_api.git &&
