@@ -1,0 +1,27 @@
+_id: req_cc6ed933f6f1422090bda077d16c13a2
+type: Request
+parentId: fld_24d248cbbf4c4aaab02adc26c2da7b9d
+modified: 1691644020477
+created: 1691644020477
+url: "{{ _.base_url }}/api/users/{{ _.user_id }}"
+name: Get a user by id
+description: ""
+method: GET
+body: {}
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+  prefix: ""
+metaSortKey: -1691644020477
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

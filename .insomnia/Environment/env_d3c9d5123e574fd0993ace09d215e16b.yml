@@ -1,0 +1,18 @@
+_id: env_d3c9d5123e574fd0993ace09d215e16b
+type: Environment
+parentId: env_46b9040328571f2c39ae1bacbb785ff6eca3befd
+modified: 1691643995465
+created: 1691643962278
+name: Lcoal serer
+data:
+  scheme: http
+  base_path: ""
+  host: 127.0.0.1:4000
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
+color: "#48db88"
+isPrivate: false
+metaSortKey: 1691643962278

@@ -1,0 +1,18 @@
+_id: env_7b7c095586be42fe86753179bc106c95
+type: Environment
+parentId: env_46b9040328571f2c39ae1bacbb785ff6eca3befd
+modified: 1691644013306
+created: 1691643983176
+name: Development server
+data:
+  scheme: https
+  base_path: ""
+  host: api.mrootx.shop
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
+color: "#1f93ff"
+isPrivate: false
+metaSortKey: 1691643983176

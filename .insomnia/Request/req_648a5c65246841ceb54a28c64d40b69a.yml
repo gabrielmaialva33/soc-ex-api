@@ -1,0 +1,33 @@
+_id: req_648a5c65246841ceb54a28c64d40b69a
+type: Request
+parentId: fld_24d248cbbf4c4aaab02adc26c2da7b9d
+modified: 1691644020462
+created: 1691644020462
+url: "{{ _.base_url }}/api/users"
+name: List all users
+description: ""
+method: GET
+body: {}
+parameters:
+  - name: page
+    disabled: true
+    value: "1"
+  - name: limit
+    disabled: true
+    value: "10"
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+  prefix: ""
+metaSortKey: -1691644020462
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

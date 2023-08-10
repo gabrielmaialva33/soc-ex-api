@@ -1,0 +1,39 @@
+_id: req_c082dabcada84952a56249de691aeab0
+type: Request
+parentId: fld_24d248cbbf4c4aaab02adc26c2da7b9d
+modified: 1691644020483
+created: 1691644020483
+url: "{{ _.base_url }}/api/users/{{ _.user_id }}"
+name: Update a user by id
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "first_name": "Gabriel",
+      "last_name": "Maia",
+      "email": "maia@email.com",
+      "username": "maia",
+      "is_online": true,
+      "inserted_at": "2021-08-01T00:00:00.000Z",
+      "updated_at": "2021-08-01T00:00:00.000Z"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+  prefix: ""
+metaSortKey: -1691644020483
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

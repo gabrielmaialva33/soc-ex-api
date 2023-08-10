@@ -6,14 +6,14 @@ created: 1683162146652
 name: Local
 data:
   scheme: http
-  base_path: ''
+  base_path: ""
   host: localhost:3333
   bearerToken: bearerToken
 dataPropertyOrder:
-  '&':
+  "&":
     - scheme
     - base_path
     - host
-color: '#1f7a25'
+color: "#1f7a25"
 isPrivate: false
 metaSortKey: 1683162146652
