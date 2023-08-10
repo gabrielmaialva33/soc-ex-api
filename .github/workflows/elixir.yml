@@ -52,7 +52,6 @@ jobs:
             cd soc_ex_api && git checkout main && git fetch --all && git reset --hard origin/main && git pull origin main
           fi
           mix deps.get && mix ecto.setup && mix phx.compile && ecto.migrate &&
-          # file service.sh must be in root directory
           chmod +x service.sh && ./service.sh &&
           sudo systemctl daemon-reload &&
           sudo systemctl enable soc_ex.service &&
