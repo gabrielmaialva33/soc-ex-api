@@ -53,7 +53,12 @@ jobs:
           fi
           cd $DIR &&
           mix deps.get && mix ecto.setup && mix deps.compile && mix ecto.migrate &&
-          tmux kill-session -t soc_ex_api || true &&
+          # Check if the app is running and kill it
+          if [ $(tmux ls | grep soc_ex_api | wc -l) -gt 0 ]
+              then
+              tmux kill-session -t soc_ex_api
+          fi
+          # Start the app in a detached tmux session
           tmux new-session -d -s soc_ex_api "PORT=4000 mix phx.server" && tmux detach &&
           echo "Deployed successfully. 🚀"
           '
