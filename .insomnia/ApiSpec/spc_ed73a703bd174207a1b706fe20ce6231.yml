@@ -1,10 +1,10 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1691644044342
+modified: 1691792274538
 created: 1683563734321
 fileName: Soc Ex
-contents: |-
+contents: |+
   openapi: 3.0.3
   info:
     title: SocEx API
@@ -25,9 +25,78 @@ contents: |-
       description: User management
 
   paths:
+    /api/users/paginate:
+      get:
+        summary: Paginate users
+        description: List all users with pagination
+        tags:
+          - Users
+        operationId: paginate.users
+        parameters:
+          - in: header
+            name: Content-Type
+            schema:
+              type: string
+              default: application/json
+            required: true
+          - in: query
+            name: page
+            schema:
+              type: integer
+              example: 1
+            required: false
+          - in: query
+            name: page_size
+            schema:
+              type: integer
+              example: 10
+            required: false
+          # ?order_by[]=first_name&order_by[]=last_name
+          - in: query
+            name: order_by
+            description: Order by fields
+            schema:
+              type: array
+              items:
+                type: string
+                enum:
+                  - first_name
+                  - last_name
+                  - email
+                  - created_at
+                  - updated_at
+              example: [ first_name, last_name ]
+        security:
+          - bearerAuth: [ ]
+        responses:
+          '200':
+            description: List of users
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/User'
+                    pagination:
+                      $ref: '#/components/schemas/Pagination'
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+          '500':
+            description: Internal Server Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
     /api/users:
       get:
-        summary: List all users
+        summary: List users
         description: List all users
         tags:
           - Users
@@ -75,7 +144,7 @@ contents: |-
                 schema:
                   $ref: '#/components/schemas/Api.Error'
       post:
-        summary: Create a new user
+        summary: Create user
         description: Create a new user
         tags:
           - Users
@@ -114,7 +183,7 @@ contents: |-
                   $ref: '#/components/schemas/Api.Error'
     /api/users/{user_id}:
       get:
-        summary: Get a user by id
+        summary: Get user
         description: Get a user by id
         tags:
           - Users
@@ -161,11 +230,11 @@ contents: |-
                 schema:
                   $ref: '#/components/schemas/Api.Error'
       put:
-        summary: Update a user by id
+        summary: Edit user
         description: Update a user by id
         tags:
           - Users
-        operationId: update.user
+        operationId: edit.user
         parameters:
           - in: header
             name: Content-Type
@@ -214,7 +283,7 @@ contents: |-
                 schema:
                   $ref: '#/components/schemas/Api.Error'
       delete:
-        summary: Delete a user by id
+        summary: Delete user
         description: Delete a user by id
         tags:
           - Users
@@ -345,6 +414,47 @@ contents: |-
           password: Soc@551238
           password_confirmation: Soc@551238
 
+      Pagination:
+        type: object
+        properties:
+          page_size:
+            type: integer
+            example: 10
+          current_page:
+            type: integer
+            example: 1
+          end_cursor:
+            type: string
+          next_page:
+            type: integer
+            example: 2
+          previous_page:
+            type: integer
+            example: 1
+          start_cursor:
+            type: string
+          total_count:
+            type: integer
+            example: 100
+          total_pages:
+            type: integer
+            example: 10
+          has_next_page:
+            type: boolean
+            example: true
+          has_previous_page:
+            type: boolean
+            example: false
+        example:
+          page_size: 10
+          current_page: 1
+          next_page: 2
+          previous_page: 1
+          total_count: 100
+          total_pages: 10
+          has_next_page: true
+          has_previous_page: false
+
       Api.Error:
         type: object
         properties:
@@ -370,4 +480,5 @@ contents: |-
           message: Invalid credentials
           path: /api/users
           timestamp: 2021-08-01T00:00:00.000Z
+
 contentType: yaml

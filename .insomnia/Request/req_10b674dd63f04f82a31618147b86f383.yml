@@ -1,10 +1,10 @@
-_id: req_c082dabcada84952a56249de691aeab0
+_id: req_10b674dd63f04f82a31618147b86f383
 type: Request
-parentId: fld_24d248cbbf4c4aaab02adc26c2da7b9d
-modified: 1691644020483
-created: 1691644020483
+parentId: fld_6fade29eabeb4b1cbb7a741672bdd15e
+modified: 1691792287420
+created: 1691792287420
 url: "{{ _.base_url }}/api/users/{{ _.user_id }}"
-name: Update a user by id
+name: Edit user
 description: ""
 method: PUT
 body:
@@ -29,7 +29,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1691644020483
+metaSortKey: -1691792287420
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
