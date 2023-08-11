@@ -7,7 +7,7 @@ url: "{{ _.base_url }}/api/users/paginate"
 name: Paginate users
 description: ""
 method: GET
-body: {}
+body: { }
 parameters:
   - name: page
     disabled: true
