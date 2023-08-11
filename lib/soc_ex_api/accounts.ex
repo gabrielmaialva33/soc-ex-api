@@ -9,6 +9,27 @@ defmodule SocExApi.Accounts do
   alias SocExApi.Accounts.User
 
   @doc """
+  Returns a paginated list of users.
+
+  ### Examples
+
+      iex> paginate_users(%Flop{page: 1, page_size: 10})
+      {:ok, [%User{}, ...]}
+
+      iex> paginate_users(%Flop{page: 2, page_size: 10})
+      {:ok, [%User{}, ...]}
+  """
+  @spec paginate_users(Flop.t()) :: {:ok, {[%User{}], Meta.t()}} | {:error, Meta.t()}
+  def paginate_users(flop \\ %Flop{}) do
+    query =
+      from u in User,
+        where: u.is_deleted != true,
+        select: u
+
+    Flop.validate_and_run(query, flop)
+  end
+
+  @doc """
   Returns the list of users.
 
   ## Examples
@@ -18,7 +39,12 @@ defmodule SocExApi.Accounts do
 
   """
   def list_users do
-    Repo.all(User)
+    query =
+      from u in User,
+        where: u.is_deleted != true,
+        select: u
+
+    Repo.all(query)
   end
 
   @doc """
@@ -35,7 +61,14 @@ defmodule SocExApi.Accounts do
       ** (Ecto.NoResultsError)
 
   """
-  def get_user!(id), do: Repo.get!(User, id)
+  def get_user!(id) do
+    query =
+      from u in User,
+        where: u.id == ^id and u.is_deleted != true,
+        select: u
+
+    Repo.one!(query)
+  end
 
   @doc """
   Creates a user.

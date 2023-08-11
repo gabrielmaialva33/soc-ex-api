@@ -44,7 +44,8 @@ defmodule SocExApi.MixProject do
       {:gettext, "~> 0.23"},
       {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.6"},
-      {:argon2_elixir, "~> 3.1"}
+      {:argon2_elixir, "~> 3.1"},
+      {:flop, "~> 0.22"}
     ]
   end
 

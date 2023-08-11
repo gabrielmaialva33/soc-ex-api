@@ -6,6 +6,13 @@ defmodule SocExApi.Accounts.User do
 
   @required_fields ~w(username first_name last_name email password is_online is_deleted)a
   @optional_fields ~w(is_online is_deleted)a
+  @sortable_fields ~w(username first_name last_name email)a
+
+  # flop config schema
+  @derive {
+    Flop.Schema,
+    filterable: @sortable_fields, sortable: @sortable_fields
+  }
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id

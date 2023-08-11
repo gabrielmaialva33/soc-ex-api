@@ -8,6 +8,7 @@ defmodule SocExApiWeb.Router do
   scope "/api", SocExApiWeb do
     pipe_through :api
 
+    get "/users/paginate", UserController, :paginate
     resources "/users", UserController, except: [:new, :edit]
   end
 
