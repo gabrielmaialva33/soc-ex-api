@@ -1,8 +1,8 @@
 openapi: 3.0.3
 info:
-  title: SocEx API
+  title: Soc Ex API
   version: 1.0.0
-  description: Documentation for the SocEx API
+  description: Documentation for the Soc Ex API
   contact:
     name: Gabriel M.
     email: gabrielmaialva33@gmail.com
