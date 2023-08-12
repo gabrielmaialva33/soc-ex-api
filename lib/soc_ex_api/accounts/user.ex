@@ -1,4 +1,8 @@
 defmodule SocExApi.Accounts.User do
+  @moduledoc """
+  User schema and changeset.
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

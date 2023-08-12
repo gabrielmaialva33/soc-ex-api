@@ -1,4 +1,8 @@
 defmodule SocExApiWeb.Telemetry do
+  @moduledoc """
+  Telemetry configuration for the application.
+  """
+
   use Supervisor
   import Telemetry.Metrics
 

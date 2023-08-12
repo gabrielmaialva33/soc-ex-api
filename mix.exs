@@ -5,6 +5,8 @@ defmodule SocExApi.MixProject do
     [
       app: :soc_ex_api,
       version: "0.1.0",
+      name: "soc-ex-api",
+      source_url: "https://github.com/gabrielmaialva33/soc-ex-api.git",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
       start_permanent: Mix.env() == :prod,
@@ -45,7 +47,9 @@ defmodule SocExApi.MixProject do
       {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.6"},
       {:argon2_elixir, "~> 3.1"},
-      {:flop, "~> 0.22"}
+      {:flop, "~> 0.22"},
+      # development
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
     ]
   end
 
