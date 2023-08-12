@@ -40,30 +40,30 @@ jobs:
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
           ssh -o StrictHostKeyChecking=no -i private_key soc_ex@20.197.248.21 '
-          DIR=/home/soc_ex/soc_ex_api
+          DIR=/home/soc_ex/soc-ex-api
           cd /home/soc_ex
           source ~/.profile && source ~/.bashrc &&
           source /home/soc_ex/.asdf/asdf.sh &&
           if [ ! -d $DIR ]
             then
-                git clone https://github.com/gabrielmaialva33/soc_ex_api.git &&
-                cd soc_ex_api && mix deps.get && mix ecto.setup && mix phx.compile
+                git clone https://github.com/gabrielmaialva33/soc-ex-api.git &&
+                cd soc-ex-api && mix deps.get && mix ecto.setup && mix phx.compile
           else
-            cd soc_ex_api && git checkout main && git fetch --all && git reset --hard origin/main && git pull origin main
+            cd soc-ex-api && git checkout main && git fetch --all && git reset --hard origin/main && git pull origin main
           fi
           cd $DIR &&
           # Install dependencies, compile
           mix deps.get && mix ecto.setup && mix deps.compile &&
           # Check if the app is running and kill it
-          if [ $(tmux ls | grep soc_ex_api | wc -l) -gt 0 ]
+          if [ $(tmux ls | grep soc-ex-api | wc -l) -gt 0 ]
             then
-              tmux kill-session -t soc_ex_api &&
+              tmux kill-session -t soc-ex-api &&
               mix ecto.drop && mix ecto.create && mix ecto.migrate
           else
             echo "No session to kill. 🤷‍"
           fi &&
           # Start the app in a detached tmux session 
-          tmux new-session -d -s soc_ex_api "PORT=4000 mix phx.server" &&
+          tmux new-session -d -s soc-ex-api "PORT=4000 mix phx.server" &&
           echo "Deployed successfully. 🚀"
           '
           
