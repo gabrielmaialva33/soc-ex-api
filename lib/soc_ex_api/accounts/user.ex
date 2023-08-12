@@ -11,7 +11,12 @@ defmodule SocExApi.Accounts.User do
   # flop config schema
   @derive {
     Flop.Schema,
-    filterable: @sortable_fields, sortable: @sortable_fields
+    filterable: @sortable_fields,
+    sortable: @sortable_fields,
+    default_order: %{
+      order_by: [:first_name, :last_name, :username, :email],
+      order_directions: [:asc, :asc, :asc, :asc]
+    }
   }
 
   @primary_key {:id, :binary_id, autogenerate: true}

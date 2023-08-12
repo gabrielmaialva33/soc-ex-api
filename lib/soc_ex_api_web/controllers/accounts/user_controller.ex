@@ -9,27 +9,11 @@ defmodule SocExApiWeb.UserController do
   @paging_opts ~w(page page_size search order_by order_dir)
 
   def paginate(conn, params) do
-    # ?order_by[]=first_name&order_by[]=last_name&order_directions[]=asc&order_directions[]=desc
-    # params order_by: first_name,last_name,username separate by comma
-    # %{order_by: [:first_name, :last_name], order_directions: [:asc, :desc]}
-    # next line convert to map and remove all params except paging_opts keys
-    # %{order_by: ["first_name", "last_name"], order_directions: ["asc", "desc"]}
-    flop_opts =
-      params
-      |> Map.take(@paging_opts)
-      |> Map.new(fn {k, v} -> {String.to_atom(k), v} end)
-      # if not exist value in map if exist key split by comma and convert to atom list else put default value
-      |> Map.put(
-        :order_by,
-        (params["order_by"] || ["first_name"])
-        |> String.split(",")
-        |> Enum.map(&String.to_atom/1)
-      )
-      |> IO.inspect(label: "flop_opts")
+    flop_opts = Map.take(params, @paging_opts)
+    # param `order_by` is a string, so we need to convert it to a list split by comma (,)
+    # evict key "order_by" not found in: %{"page" => "1", "page_size" => "5"} (KeyError)
 
-    # if not exist key in map, put default value
-    #      |> Map.update!(:order_by, &String.split(&1, ","))
-    #      |> Map.update!(:order_directions, &String.split(&1, ","))
+    IO.inspect(flop_opts)
 
     with {:ok, flop} <- Flop.validate(flop_opts),
          {:ok, {users, meta}} <- Accounts.paginate_users(flop) do
