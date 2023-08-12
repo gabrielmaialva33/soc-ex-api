@@ -6,14 +6,51 @@ defmodule SocExApiWeb.UserController do
 
   action_fallback SocExApiWeb.FallbackController
 
-  @paging_opts ~w(page page_size search order_by order_dir)
+  @paging_opts ~w(page page_size search order_by order_directions)
+
+  @spec parse_order_by(map()) :: map()
+  defp parse_order_by(opts) do
+    if Map.has_key?(opts, :order_by) do
+      Map.update!(opts, :order_by, fn v ->
+        if v,
+          do:
+            v
+            |> String.split(",")
+            |> Enum.map(&String.trim/1)
+            |> Enum.reject(&(&1 == ""))
+            |> Enum.map(&String.to_atom/1),
+          else: nil
+      end)
+    else
+      opts
+    end
+  end
+
+  @spec parse_order_directions(map()) :: map()
+  defp parse_order_directions(opts) do
+    if Map.has_key?(opts, :order_directions) do
+      Map.update!(opts, :order_directions, fn v ->
+        if v,
+          do:
+            v
+            |> String.split(",")
+            |> Enum.map(&String.trim/1)
+            |> Enum.reject(&(&1 == ""))
+            |> Enum.map(&String.to_atom/1),
+          else: nil
+      end)
+    else
+      opts
+    end
+  end
 
   def paginate(conn, params) do
-    flop_opts = Map.take(params, @paging_opts)
-    # param `order_by` is a string, so we need to convert it to a list split by comma (,)
-    # evict key "order_by" not found in: %{"page" => "1", "page_size" => "5"} (KeyError)
-
-    IO.inspect(flop_opts)
+    flop_opts =
+      Map.take(params, @paging_opts)
+      |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
+      |> Enum.into(%{})
+      |> parse_order_by
+      |> parse_order_directions
 
     with {:ok, flop} <- Flop.validate(flop_opts),
          {:ok, {users, meta}} <- Accounts.paginate_users(flop) do
