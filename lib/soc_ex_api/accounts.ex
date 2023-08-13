@@ -19,13 +19,14 @@ defmodule SocExApi.Accounts do
       iex> paginate_users(%Flop{page: 2, page_size: 10})
       {:ok, [%User{}, ...]}
   """
+  @spec paginate_users(map) :: {:ok, {[User.t()], Flop.Meta.t()}} | {:error, Flop.Meta.t()}
   def paginate_users(flop \\ %Flop{}) do
     query =
       from u in User,
         where: u.is_deleted != true,
         select: u
 
-    Flop.validate_and_run(query, flop)
+    Flop.validate_and_run(query, flop, for: User)
   end
 
   @doc """

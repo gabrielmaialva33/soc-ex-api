@@ -10,7 +10,7 @@ defmodule SocExApi.Accounts.User do
 
   @required_fields ~w(username first_name last_name email password is_online is_deleted)a
   @optional_fields ~w(is_online is_deleted)a
-  @sortable_fields ~w(username first_name last_name email)a
+  @sortable_fields ~w(first_name last_name username email)a
 
   # flop config schema
   @derive {
@@ -18,7 +18,7 @@ defmodule SocExApi.Accounts.User do
     filterable: @sortable_fields,
     sortable: @sortable_fields,
     default_order: %{
-      order_by: [:first_name, :last_name, :username, :email],
+      order_by: @sortable_fields,
       order_directions: [:asc, :asc, :asc, :asc]
     }
   }

@@ -21,4 +21,11 @@ defmodule SocExApiWeb.FallbackController do
     |> put_view(html: SocExApiWeb.ErrorHTML, json: SocExApiWeb.ErrorJSON)
     |> render(:"404")
   end
+
+  def call(conn, {:error, %Flop.Meta{} = meta}) do
+    conn
+    |> put_status(:unprocessable_entity)
+    |> put_view(json: SocExApiWeb.FlopJSON)
+    |> render(:error, meta: meta)
+  end
 end

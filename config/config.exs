@@ -39,7 +39,7 @@ config :logger, :console,
 config :phoenix, :json_library, Jason
 
 # Use Flop for pagination
-config :flop, repo: SocExApi.Repo
+config :flop, repo: SocExApi.Repo, default_limit: 10, max_limit: 100
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
