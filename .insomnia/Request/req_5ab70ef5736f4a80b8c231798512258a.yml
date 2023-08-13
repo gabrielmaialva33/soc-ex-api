@@ -1,13 +1,13 @@
-_id: req_395f590afc5c4efaa329a48d338153d3
+_id: req_5ab70ef5736f4a80b8c231798512258a
 type: Request
-parentId: fld_6fade29eabeb4b1cbb7a741672bdd15e
-modified: 1691792287416
-created: 1691792287416
+parentId: fld_17078e483c07413a879980ee9d573545
+modified: 1691885007051
+created: 1691885007051
 url: "{{ _.base_url }}/api/users/paginate"
 name: Paginate users
 description: ""
 method: GET
-body: { }
+body: {}
 parameters:
   - name: page
     disabled: true
@@ -17,7 +17,10 @@ parameters:
     value: "10"
   - name: order_by
     disabled: true
-    value: first_name,last_name
+    value: first_name,last_name,username,email
+  - name: order_directions
+    disabled: true
+    value: asc,asc,desc,desc
 headers:
   - name: Content-Type
     disabled: false
@@ -26,7 +29,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1691792287416
+metaSortKey: -1691885007051
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

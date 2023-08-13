@@ -1,8 +1,8 @@
-_id: req_48b2b24fe9564c229d9057a4afd8dbec
+_id: req_e37be84e023c4e3f88585ed31c1bbe06
 type: Request
-parentId: fld_6fade29eabeb4b1cbb7a741672bdd15e
-modified: 1691792287419
-created: 1691792287419
+parentId: fld_17078e483c07413a879980ee9d573545
+modified: 1691885007053
+created: 1691885007053
 url: "{{ _.base_url }}/api/users"
 name: Create user
 description: ""
@@ -18,13 +18,13 @@ body:
       "password": "Soc@551238",
       "password_confirmation": "Soc@551238"
     }
-parameters: [ ]
+parameters: []
 headers:
   - name: Content-Type
     disabled: false
     value: application/json
-authentication: { }
-metaSortKey: -1691792287419
+authentication: {}
+metaSortKey: -1691885007053
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
