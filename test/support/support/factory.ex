@@ -4,6 +4,6 @@ defmodule SocExApi.Factory do
   entities via the `SocExApi` context.
   """
 
-  use ExMachina.Ecto, repo: MyApp.Repo
+  use ExMachina.Ecto, repo: SocExApi.Repo
   use SocExApi.UserFactory
 end
