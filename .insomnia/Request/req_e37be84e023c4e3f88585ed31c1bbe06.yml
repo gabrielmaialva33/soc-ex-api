@@ -1,0 +1,34 @@
+_id: req_e37be84e023c4e3f88585ed31c1bbe06
+type: Request
+parentId: fld_17078e483c07413a879980ee9d573545
+modified: 1691885007053
+created: 1691885007053
+url: "{{ _.base_url }}/api/users"
+name: Create user
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "first_name": "Gabriel",
+      "last_name": "Maia",
+      "email": "maia@email.com",
+      "username": "maia",
+      "password": "Soc@551238",
+      "password_confirmation": "Soc@551238"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication: {}
+metaSortKey: -1691885007053
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

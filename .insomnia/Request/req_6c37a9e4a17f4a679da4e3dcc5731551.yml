@@ -1,0 +1,39 @@
+_id: req_6c37a9e4a17f4a679da4e3dcc5731551
+type: Request
+parentId: fld_17078e483c07413a879980ee9d573545
+modified: 1691885007053
+created: 1691885007053
+url: "{{ _.base_url }}/api/users/{{ _.user_id }}"
+name: Edit user
+description: ""
+method: PUT
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "first_name": "Gabriel",
+      "last_name": "Maia",
+      "email": "maia@email.com",
+      "username": "maia",
+      "is_online": true,
+      "inserted_at": "2021-08-01T00:00:00.000Z",
+      "updated_at": "2021-08-01T00:00:00.000Z"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication:
+  type: bearer
+  token: "{{ _.bearerToken }}"
+  prefix: ""
+metaSortKey: -1691885007053
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
