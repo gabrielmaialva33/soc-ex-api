@@ -6,42 +6,8 @@ defmodule SocExApiWeb.UserController do
 
   action_fallback SocExApiWeb.FallbackController
 
-  @paging_opts ~w(page page_size search order_by order_directions)
-
-  defp parse_order_by(opts) do
-    if Map.has_key?(opts, :order_by) do
-      opts
-      |> Map.update!(:order_by, &parse_order(&1))
-    else
-      opts
-    end
-  end
-
-  defp parse_order_directions(opts) do
-    if Map.has_key?(opts, :order_directions) do
-      opts
-      |> Map.update!(:order_directions, &parse_order(&1))
-    else
-      opts
-    end
-  end
-
-  defp parse_order(order) do
-    order
-    |> String.split(",")
-    |> Enum.map(&String.trim/1)
-    |> Enum.reject(&(&1 == ""))
-    |> Enum.map(&String.to_atom/1)
-  end
-
   def paginate(conn, params) do
-    flop_opts =
-      params
-      |> Map.take(@paging_opts)
-      |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
-      |> Enum.into(%{})
-      |> parse_order_by
-      |> parse_order_directions
+    flop_opts = params |> SocExApi.Helpers.parse_pagination_params()
 
     with {:ok, flop} <- Flop.validate(flop_opts),
          {:ok, {users, meta}} <- Accounts.paginate_users(flop) do
