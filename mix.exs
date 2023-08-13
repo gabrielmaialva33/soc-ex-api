@@ -21,12 +21,12 @@ defmodule SocExApi.MixProject do
   def application do
     [
       mod: {SocExApi.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :ex_machina]
     ]
   end
 
   # Specifies which paths to compile per environment.
-  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(:test), do: ["lib", "test/support", "test/factories"]
   defp elixirc_paths(_), do: ["lib"]
 
   # Specifies your project dependencies.
@@ -49,7 +49,10 @@ defmodule SocExApi.MixProject do
       {:argon2_elixir, "~> 3.1"},
       {:flop, "~> 0.22"},
       # development
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false}
+      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      # test
+      {:ex_machina, "~> 2.7", only: [:dev, :test]},
+      {:faker, "~> 0.17", only: [:dev, :test]}
     ]
   end
 
