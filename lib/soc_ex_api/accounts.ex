@@ -19,7 +19,6 @@ defmodule SocExApi.Accounts do
       iex> paginate_users(%Flop{page: 2, page_size: 10})
       {:ok, [%User{}, ...]}
   """
-  @spec paginate_users(Flop.t()) :: {:ok, {[%User{}], Meta.t()}} | {:error, Meta.t()}
   def paginate_users(flop \\ %Flop{}) do
     query =
       from u in User,

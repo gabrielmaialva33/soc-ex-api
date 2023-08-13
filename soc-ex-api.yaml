@@ -44,23 +44,30 @@ paths:
             type: integer
             example: 10
           required: false
-        # ?order_by[]=first_name&order_by[]=last_name
         - in: query
           name: order_by
-          description: Order by fields
+          description: Order by fields for each field
           schema:
             type: array
             items:
               type: string
-              required: false
               enum:
                 - first_name
                 - last_name
+                - username
                 - email
-                - created_at
-                - updated_at
-            required: false
-            example: [ first_name, last_name ]
+            example: [ first_name, last_name, username, email ]
+        - in: query
+          name: order_directions
+          description: Order directions for each field
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - asc
+                - desc
+            example: [ asc, asc, desc, desc ]
       security:
         - bearerAuth: [ ]
       responses:
@@ -475,4 +482,3 @@ components:
         message: Invalid credentials
         path: /api/users
         timestamp: 2021-08-01T00:00:00.000Z
-

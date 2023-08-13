@@ -8,45 +8,36 @@ defmodule SocExApiWeb.UserController do
 
   @paging_opts ~w(page page_size search order_by order_directions)
 
-  @spec parse_order_by(map()) :: map()
   defp parse_order_by(opts) do
     if Map.has_key?(opts, :order_by) do
-      Map.update!(opts, :order_by, fn v ->
-        if v,
-          do:
-            v
-            |> String.split(",")
-            |> Enum.map(&String.trim/1)
-            |> Enum.reject(&(&1 == ""))
-            |> Enum.map(&String.to_atom/1),
-          else: nil
-      end)
+      opts
+      |> Map.update!(:order_by, &parse_order(&1))
     else
       opts
     end
   end
 
-  @spec parse_order_directions(map()) :: map()
   defp parse_order_directions(opts) do
     if Map.has_key?(opts, :order_directions) do
-      Map.update!(opts, :order_directions, fn v ->
-        if v,
-          do:
-            v
-            |> String.split(",")
-            |> Enum.map(&String.trim/1)
-            |> Enum.reject(&(&1 == ""))
-            |> Enum.map(&String.to_atom/1),
-          else: nil
-      end)
+      opts
+      |> Map.update!(:order_directions, &parse_order(&1))
     else
       opts
     end
+  end
+
+  defp parse_order(order) do
+    order
+    |> String.split(",")
+    |> Enum.map(&String.trim/1)
+    |> Enum.reject(&(&1 == ""))
+    |> Enum.map(&String.to_atom/1)
   end
 
   def paginate(conn, params) do
     flop_opts =
-      Map.take(params, @paging_opts)
+      params
+      |> Map.take(@paging_opts)
       |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
       |> Enum.into(%{})
       |> parse_order_by
