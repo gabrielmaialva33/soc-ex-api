@@ -111,17 +111,43 @@ paths:
             example: application/json
           required: true
         - in: query
-          name: page
+          name: offset
+          description: Offset of users
           schema:
             type: integer
-            example: 1
+            example: 0
           required: false
         - in: query
           name: limit
+          description: Limit of users
           schema:
             type: integer
             example: 10
           required: false
+        - in: query
+          name: order_by
+          description: Order by fields for each field
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - first_name
+                - last_name
+                - username
+                - email
+            example: [ first_name, last_name, username, email ]
+        - in: query
+          name: order_directions
+          description: Order directions for each field
+          schema:
+            type: array
+            items:
+              type: string
+              enum:
+                - asc
+                - desc
+            example: [ asc, asc, desc, desc ]
       security:
         - bearerAuth: [ ]
       responses:

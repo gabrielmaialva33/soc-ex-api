@@ -38,13 +38,15 @@ defmodule SocExApi.Accounts do
       [%User{}, ...]
 
   """
-  def list_users do
+  @spec list_users(map) :: {:ok, [User.t()]} | {:error, Flop.Meta.t()}
+  def list_users(flop \\ %Flop{}) do
     query =
       from u in User,
         where: u.is_deleted != true,
         select: u
 
-    Repo.all(query)
+    # load flop without meta
+    Flop.validate_and_run(query, flop, for: User)
   end
 
   @doc """

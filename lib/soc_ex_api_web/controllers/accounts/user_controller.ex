@@ -15,9 +15,13 @@ defmodule SocExApiWeb.UserController do
     end
   end
 
-  def index(conn, _params) do
-    users = Accounts.list_users()
-    render(conn, :index, users: users)
+  def index(conn, params) do
+    flop_opts = params |> SocExApi.Helpers.parse_limit_params()
+
+    with {:ok, flop} <- Flop.validate(flop_opts),
+         {:ok, {users, meta}} <- Accounts.list_users(flop) do
+      render(conn, :index, users: users, meta: meta)
+    end
   end
 
   def create(conn, user_params) do

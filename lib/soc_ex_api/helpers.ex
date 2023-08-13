@@ -4,6 +4,7 @@ defmodule SocExApi.Helpers do
   """
 
   @paging_opts ~w(page page_size search order_by order_directions)
+  @limit_opts ~w(limit offset order_by order_directions)
 
   @doc """
   Parses pagination params from a map.
@@ -15,6 +16,15 @@ defmodule SocExApi.Helpers do
   def parse_pagination_params(params) do
     params
     |> Map.take(@paging_opts)
+    |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
+    |> Enum.into(%{})
+    |> parse_order_by
+    |> parse_order_directions
+  end
+
+  def parse_limit_params(params) do
+    params
+    |> Map.take(@limit_opts)
     |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
     |> Enum.into(%{})
     |> parse_order_by
