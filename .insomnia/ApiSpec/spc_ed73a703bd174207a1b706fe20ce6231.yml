@@ -1,15 +1,15 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1691792274538
+modified: 1691884999724
 created: 1683563734321
 fileName: Soc Ex
-contents: |+
+contents: |
   openapi: 3.0.3
   info:
-    title: SocEx API
+    title: Soc Ex API
     version: 1.0.0
-    description: Documentation for the SocEx API
+    description: Documentation for the Soc Ex API
     contact:
       name: Gabriel M.
       email: gabrielmaialva33@gmail.com
@@ -51,10 +51,9 @@ contents: |+
               type: integer
               example: 10
             required: false
-          # ?order_by[]=first_name&order_by[]=last_name
           - in: query
             name: order_by
-            description: Order by fields
+            description: Order by fields for each field
             schema:
               type: array
               items:
@@ -62,10 +61,20 @@ contents: |+
                 enum:
                   - first_name
                   - last_name
+                  - username
                   - email
-                  - created_at
-                  - updated_at
-              example: [ first_name, last_name ]
+              example: [ first_name, last_name, username, email ]
+          - in: query
+            name: order_directions
+            description: Order directions for each field
+            schema:
+              type: array
+              items:
+                type: string
+                enum:
+                  - asc
+                  - desc
+              example: [ asc, asc, desc, desc ]
         security:
           - bearerAuth: [ ]
         responses:
@@ -480,5 +489,4 @@ contents: |+
           message: Invalid credentials
           path: /api/users
           timestamp: 2021-08-01T00:00:00.000Z
-
 contentType: yaml
