@@ -1,7 +1,7 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1691884999724
+modified: 1691975145229
 created: 1683563734321
 fileName: Soc Ex
 contents: |
@@ -118,17 +118,43 @@ contents: |
               example: application/json
             required: true
           - in: query
-            name: page
+            name: offset
+            description: Offset of users
             schema:
               type: integer
-              example: 1
+              example: 0
             required: false
           - in: query
             name: limit
+            description: Limit of users
             schema:
               type: integer
               example: 10
             required: false
+          - in: query
+            name: order_by
+            description: Order by fields for each field
+            schema:
+              type: array
+              items:
+                type: string
+                enum:
+                  - first_name
+                  - last_name
+                  - username
+                  - email
+              example: [ first_name, last_name, username, email ]
+          - in: query
+            name: order_directions
+            description: Order directions for each field
+            schema:
+              type: array
+              items:
+                type: string
+                enum:
+                  - asc
+                  - desc
+              example: [ asc, asc, desc, desc ]
         security:
           - bearerAuth: [ ]
         responses:
