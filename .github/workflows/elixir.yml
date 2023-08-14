@@ -53,7 +53,7 @@ jobs:
           fi
           cd $DIR &&
           # Install dependencies, compile
-          mix deps.get && mix deps.compile && mix ecto.drop && mix ecto.setup &&
+          mix deps.get && mix deps.compile && mix ecto.setup &&
           # Check if the app is running and kill it
           if [ $(tmux ls | grep soc-ex-api | wc -l) -gt 0 ]
             then
