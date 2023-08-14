@@ -39,7 +39,9 @@ defmodule SocExApi.Accounts.User do
     timestamps()
   end
 
-  @doc false
+  @doc """
+  Builds a changeset based on the `user` and `attrs`.
+  """
   def changeset(user, attrs) do
     user
     |> cast(attrs, @required_fields ++ @optional_fields)
@@ -48,7 +50,6 @@ defmodule SocExApi.Accounts.User do
   end
 
   @spec validate_changeset(Ecto.Changeset.t()) :: Ecto.Changeset.t()
-  @doc false
   defp validate_changeset(user) do
     user
     |> validate_length(:first_name, min: 1, max: 40)
@@ -67,7 +68,6 @@ defmodule SocExApi.Accounts.User do
   end
 
   @spec password_hash(Ecto.Changeset.t()) :: Ecto.Changeset.t()
-  @doc false
   defp password_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
