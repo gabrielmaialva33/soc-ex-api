@@ -21,7 +21,7 @@ defmodule SocExApi.MixProject do
   def application do
     [
       mod: {SocExApi.Application, []},
-      extra_applications: [:logger, :runtime_tools, :ex_machina]
+      extra_applications: [:logger, :runtime_tools, :os_mon, :ex_machina]
     ]
   end
 
@@ -50,6 +50,7 @@ defmodule SocExApi.MixProject do
       {:flop, "~> 0.22"},
       # development
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
+      {:ecto_psql_extras, "~> 0.7.12", only: [:dev, :test]},
       # test
       {:ex_machina, "~> 2.7", only: [:dev, :test]},
       {:faker, "~> 0.17", only: [:dev, :test]}

@@ -24,7 +24,12 @@ defmodule SocExApiWeb.Router do
     scope "/dev" do
       pipe_through [:fetch_session, :protect_from_forgery]
 
-      live_dashboard "/dashboard", metrics: SocExApiWeb.Telemetry
+      live_dashboard "/dashboard",
+        metrics: SocExApiWeb.Telemetry,
+        metrics_history: {MyApp.MetricsStorage, :metrics_history, []},
+        ecto_repos: [SocExApiWeb.Repo],
+        ecto_psql_extras_options: [long_running_queries: [threshold: "200 milliseconds"]]
+
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end
