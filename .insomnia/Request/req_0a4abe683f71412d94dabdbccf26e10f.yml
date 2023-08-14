@@ -1,30 +1,26 @@
-_id: req_e05176e743c94a24959bb2feb250a9a2
+_id: req_0a4abe683f71412d94dabdbccf26e10f
 type: Request
-parentId: fld_d3c2c1fdf23a48a788d2866ed77bdaee
-modified: 1691975264785
-created: 1691975148105
-url: "{{ _.base_url }}/api/users"
-name: List users
+parentId: fld_a742b19795ed45ccaaaba348511472b8
+modified: 1691975591430
+created: 1691975591430
+url: "{{ _.base_url }}/api/users/paginate"
+name: Paginate users
 description: ""
 method: GET
 body: {}
 parameters:
-  - name: offset
+  - name: page
     disabled: true
-    value: "0"
-    id: pair_45db638cf7f142679da85d4a3d740e3c
-  - name: limit
+    value: "1"
+  - name: page_size
     disabled: true
     value: "10"
-    id: pair_a92037ae45ae4836a0b97ba2b9014219
   - name: order_by
     disabled: true
     value: first_name,last_name,username,email
-    id: pair_ed70676fdf3843e0aa239c689ef2b415
   - name: order_directions
     disabled: true
     value: asc,asc,desc,desc
-    id: pair_f58bbdc6d5074654a31138dade945c1e
 headers:
   - name: Content-Type
     disabled: false
@@ -33,7 +29,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1691975148105
+metaSortKey: -1691975591430
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

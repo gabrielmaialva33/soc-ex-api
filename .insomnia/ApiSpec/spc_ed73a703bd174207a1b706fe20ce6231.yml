@@ -1,7 +1,7 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1691975145229
+modified: 1691975584219
 created: 1683563734321
 fileName: Soc Ex
 contents: |
@@ -387,6 +387,10 @@ contents: |
           username:
             type: string
             example: maia
+          avatar_url:
+            type: string
+            format: url
+            example: https://api.multiavatar.com/gabriel.maia.svg
           is_online:
             type: boolean
             example: true
@@ -409,6 +413,7 @@ contents: |
           last_name: Maia
           email: maia@email.com
           username: maia
+          avatar_url: https://api.multiavatar.com/gabriel.maia.svg
           is_online: true
           inserted_at: 2021-08-01T00:00:00.000Z
           updated_at: 2021-08-01T00:00:00.000Z
