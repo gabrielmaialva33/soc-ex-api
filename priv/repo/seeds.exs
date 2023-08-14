@@ -15,14 +15,18 @@ alias SocExApi.Repo
 alias SocExApi.Accounts.User
 
 Enum.map(1..100, fn _ ->
+  first_name = Faker.Person.first_name()
+  last_name = Faker.Person.last_name()
+
   %User{
     username: Faker.Internet.user_name(),
-    first_name: Faker.Person.first_name(),
-    last_name: Faker.Person.last_name(),
+    first_name: first_name,
+    last_name: last_name,
     email: Faker.Internet.email(),
     password_hash: Argon2.hash_pwd_salt("12345678"),
+    avatar_url: "https://api.multiavatar.com/#{first_name}#{last_name}.svg",
     is_online: Faker.random_uniform() > Faker.random_uniform(),
-    is_deleted: Faker.random_uniform() > Faker.random_uniform()
+    is_deleted: Faker.random_uniform() < Faker.random_uniform()
   }
   |> Repo.insert!()
 end)

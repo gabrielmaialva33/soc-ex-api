@@ -9,7 +9,7 @@ defmodule SocExApi.Accounts.User do
   alias SocExApi.Accounts.User
 
   @required_fields ~w(username first_name last_name email password is_online is_deleted)a
-  @optional_fields ~w(is_online is_deleted)a
+  @optional_fields ~w(avatar_url is_online is_deleted)a
   @sortable_fields ~w(first_name last_name username email)a
 
   # flop config schema
@@ -33,6 +33,7 @@ defmodule SocExApi.Accounts.User do
     field :email, :string
     field :password, :string, virtual: true
     field :password_hash, :string
+    field :avatar_url, :string
     field :is_online, :boolean, default: false
     field :is_deleted, :boolean, default: false
 
@@ -65,6 +66,7 @@ defmodule SocExApi.Accounts.User do
     |> unique_constraint(:email)
     |> unique_constraint(:username)
     |> password_hash
+    |> generate_avatar_url
   end
 
   @spec password_hash(Ecto.Changeset.t()) :: Ecto.Changeset.t()
@@ -72,6 +74,17 @@ defmodule SocExApi.Accounts.User do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
         put_change(changeset, :password_hash, Argon2.hash_pwd_salt(password, salt_len: 32))
+
+      _ ->
+        changeset
+    end
+  end
+
+  @spec generate_avatar_url(Ecto.Changeset.t()) :: Ecto.Changeset.t()
+  defp generate_avatar_url(changeset) do
+    case changeset do
+      %Ecto.Changeset{valid?: true, changes: %{first_name: first_name, last_name: last_name}} ->
+        put_change(changeset, :avatar_url, "https://ui-avatars.com/api/?name=#{first_name}+#{last_name}&size=256")
 
       _ ->
         changeset

@@ -29,6 +29,7 @@ defmodule SocExApiWeb.UserJSON do
   defp data(%User{} = user) do
     %{
       id: user.id,
+      avatar_url: user.avatar_url,
       first_name: user.first_name,
       last_name: user.last_name,
       full_name: user.first_name <> " " <> user.last_name,
