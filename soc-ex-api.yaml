@@ -380,6 +380,10 @@ components:
         username:
           type: string
           example: maia
+        avatar:
+          type: string
+          format: url
+          example: https://api.multiavatar.com/gabriel.maia.svg
         is_online:
           type: boolean
           example: true
@@ -402,6 +406,7 @@ components:
         last_name: Maia
         email: maia@email.com
         username: maia
+        avatar: https://api.multiavatar.com/gabriel.maia.svg
         is_online: true
         inserted_at: 2021-08-01T00:00:00.000Z
         updated_at: 2021-08-01T00:00:00.000Z
