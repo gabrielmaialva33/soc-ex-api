@@ -8,8 +8,9 @@ defmodule SocExApiWeb.Router do
   scope "/api", SocExApiWeb do
     pipe_through :api
 
-    get "/users/paginate", UserController, :paginate
+    # Accounts
     resources "/users", UserController, except: [:new, :edit]
+    resources "/roles", RoleController, except: [:new, :edit, :create, :update, :delete]
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

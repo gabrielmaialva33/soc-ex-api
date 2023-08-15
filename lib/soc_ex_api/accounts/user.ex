@@ -84,7 +84,11 @@ defmodule SocExApi.Accounts.User do
   defp generate_avatar_url(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{first_name: first_name, last_name: last_name}} ->
-        put_change(changeset, :avatar_url, "https://api.multiavatar.com/#{first_name}#{last_name}.svg")
+        put_change(
+          changeset,
+          :avatar_url,
+          "https://api.multiavatar.com/#{first_name}#{last_name}.svg"
+        )
 
       _ ->
         changeset

@@ -6,21 +6,12 @@ defmodule SocExApiWeb.UserController do
 
   action_fallback SocExApiWeb.FallbackController
 
-  def paginate(conn, params) do
+  def index(conn, params) do
     flop_opts = params |> SocExApi.Helpers.parse_pagination_params()
 
     with {:ok, flop} <- Flop.validate(flop_opts),
          {:ok, {users, meta}} <- Accounts.paginate_users(flop) do
       render(conn, :paginate, users: users, meta: meta)
-    end
-  end
-
-  def index(conn, params) do
-    flop_opts = params |> SocExApi.Helpers.parse_limit_params()
-
-    with {:ok, flop} <- Flop.validate(flop_opts),
-         {:ok, {users, meta}} <- Accounts.list_users(flop) do
-      render(conn, :index, users: users, meta: meta)
     end
   end
 

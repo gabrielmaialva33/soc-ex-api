@@ -23,4 +23,19 @@ defmodule SocExApi.AccountsFixtures do
 
     user
   end
+
+  @doc """
+  Generate a role.
+  """
+  def role_fixture(attrs \\ %{}) do
+    {:ok, role} =
+      attrs
+      |> Enum.into(%{
+        name: "some name",
+        slug: "some slug"
+      })
+      |> SocExApi.Accounts.create_role()
+
+    role
+  end
 end

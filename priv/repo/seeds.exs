@@ -14,6 +14,7 @@
 alias SocExApi.Repo
 alias SocExApi.Accounts.User
 
+# create 100 users
 Enum.map(1..100, fn _ ->
   first_name = Faker.Person.first_name()
   last_name = Faker.Person.last_name()
@@ -28,5 +29,13 @@ Enum.map(1..100, fn _ ->
     is_online: Faker.random_uniform() > Faker.random_uniform(),
     is_deleted: Faker.random_uniform() < Faker.random_uniform()
   }
+  |> Repo.insert!()
+end)
+
+# create roles
+alias SocExApi.Accounts.Role
+
+Enum.map(["root", "admin", "user"], fn name ->
+  %Role{name: name, slug: name |> String.upcase()}
   |> Repo.insert!()
 end)
