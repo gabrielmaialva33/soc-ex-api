@@ -1,7 +1,7 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1691975584219
+modified: 1692066878231
 created: 1683563734321
 fileName: Soc Ex
 contents: |
@@ -23,15 +23,16 @@ contents: |
   tags:
     - name: Users
       description: User management
-
+    - name: Roles
+      description: Role management
   paths:
-    /api/users/paginate:
+    /api/users:
       get:
-        summary: Paginate users
-        description: List all users with pagination
+        summary: List users
+        description: List all users paginated
         tags:
           - Users
-        operationId: paginate.users
+        operationId: list.users
         parameters:
           - in: header
             name: Content-Type
@@ -91,81 +92,6 @@ contents: |
                         $ref: '#/components/schemas/User'
                     pagination:
                       $ref: '#/components/schemas/Pagination'
-          '401':
-            description: Unauthorized
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Api.Error'
-          '500':
-            description: Internal Server Error
-            content:
-              application/json:
-                schema:
-                  $ref: '#/components/schemas/Api.Error'
-    /api/users:
-      get:
-        summary: List users
-        description: List all users
-        tags:
-          - Users
-        operationId: list.users
-        parameters:
-          - in: header
-            name: Content-Type
-            schema:
-              type: string
-              example: application/json
-            required: true
-          - in: query
-            name: offset
-            description: Offset of users
-            schema:
-              type: integer
-              example: 0
-            required: false
-          - in: query
-            name: limit
-            description: Limit of users
-            schema:
-              type: integer
-              example: 10
-            required: false
-          - in: query
-            name: order_by
-            description: Order by fields for each field
-            schema:
-              type: array
-              items:
-                type: string
-                enum:
-                  - first_name
-                  - last_name
-                  - username
-                  - email
-              example: [ first_name, last_name, username, email ]
-          - in: query
-            name: order_directions
-            description: Order directions for each field
-            schema:
-              type: array
-              items:
-                type: string
-                enum:
-                  - asc
-                  - desc
-              example: [ asc, asc, desc, desc ]
-        security:
-          - bearerAuth: [ ]
-        responses:
-          '200':
-            description: List of users
-            content:
-              application/json:
-                schema:
-                  type: array
-                  items:
-                    $ref: '#/components/schemas/User'
           '401':
             description: Unauthorized
             content:
@@ -360,6 +286,130 @@ contents: |
               application/json:
                 schema:
                   $ref: '#/components/schemas/Api.Error'
+
+    /api/roles:
+      get:
+        summary: List roles
+        description: List all roles paginated
+        tags:
+          - Roles
+        operationId: list.roles
+        parameters:
+          - in: header
+            name: Content-Type
+            schema:
+              type: string
+              default: application/json
+            required: true
+          - in: query
+            name: page
+            schema:
+              type: integer
+              example: 1
+            required: false
+          - in: query
+            name: page_size
+            schema:
+              type: integer
+              example: 10
+            required: false
+          - in: query
+            name: order_by
+            description: Order by fields for each field
+            schema:
+              type: array
+              items:
+                type: string
+                enum:
+                  - name
+              example: [ name ]
+          - in: query
+            name: order_directions
+            description: Order directions for each field
+            schema:
+              type: array
+              items:
+                type: string
+                enum:
+                  - asc
+                  - desc
+              example: [ asc ]
+        security:
+          - bearerAuth: [ ]
+        responses:
+          '200':
+            description: List of roles
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: '#/components/schemas/Role'
+                    pagination:
+                      $ref: '#/components/schemas/Pagination'
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+          '500':
+            description: Internal Server Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+    /api/roles/{role_id}:
+      get:
+        summary: Get role
+        description: Get a role by id
+        tags:
+          - Roles
+        operationId: get.role
+        parameters:
+          - in: header
+            name: Content-Type
+            schema:
+              type: string
+              example: application/json
+            required: true
+          - in: path
+            name: role_id
+            schema:
+              type: string
+              format: uuid
+              example: 9a2fcb3c-71ac-4c1c-887b-ab46a96c5587
+            required: true
+        security:
+          - bearerAuth: [ ]
+        responses:
+          '200':
+            description: Role found
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Role'
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+          '404':
+            description: Role not found
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+          '500':
+            description: Internal Server Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
   components:
     securitySchemes:
       bearerAuth:
@@ -394,6 +444,10 @@ contents: |
           is_online:
             type: boolean
             example: true
+          roles:
+            type: array
+            items:
+              $ref: '#/components/schemas/Role'
           inserted_at:
             type: string
             format: date-time
@@ -408,13 +462,17 @@ contents: |
           - email
           - username
         example:
-          id: 123e4567-e89b-12d3-a456-426614174000
+          id: 80526914-5e98-48bd-b995-c329219ed6d0
           first_name: Gabriel
           last_name: Maia
           email: maia@email.com
           username: maia
           avatar_url: https://api.multiavatar.com/gabriel.maia.svg
           is_online: true
+          roles:
+            - id: 4b4a72f4-e448-433e-83a8-665829ce7dd9
+              name: admin
+              slug: ADMIN
           inserted_at: 2021-08-01T00:00:00.000Z
           updated_at: 2021-08-01T00:00:00.000Z
       User.Create:
@@ -453,6 +511,29 @@ contents: |
           username: maia
           password: Soc@551238
           password_confirmation: Soc@551238
+
+      Role:
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+            example: 123e4567-e89b-12d3-a456-426614174000
+          name:
+            type: string
+            example: admin
+          slug:
+            type: string
+            example: ADMIN
+        required:
+          - name
+          - slug
+        example:
+          id: 123e4567-e89b-12d3-a456-426614174000
+          name: admin
+          slug: ADMIN
+          inserted_at: 2021-08-01T00:00:00.000Z
+          updated_at: 2021-08-01T00:00:00.000Z
 
       Pagination:
         type: object

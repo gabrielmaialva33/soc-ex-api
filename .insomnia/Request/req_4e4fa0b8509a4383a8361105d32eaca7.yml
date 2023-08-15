@@ -1,8 +1,8 @@
-_id: req_b1e6fb27c02f4c088b6bf2be987ec60c
+_id: req_4e4fa0b8509a4383a8361105d32eaca7
 type: Request
-parentId: fld_a742b19795ed45ccaaaba348511472b8
-modified: 1691975591431
-created: 1691975591431
+parentId: fld_676749895330426db7d5c45dc53f2912
+modified: 1692066888217
+created: 1692066888217
 url: "{{ _.base_url }}/api/users"
 name: Create user
 description: ""
@@ -24,7 +24,7 @@ headers:
     disabled: false
     value: application/json
 authentication: {}
-metaSortKey: -1691975591431
+metaSortKey: -1692066888217
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

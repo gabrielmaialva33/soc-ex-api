@@ -1,10 +1,10 @@
-_id: req_0a4abe683f71412d94dabdbccf26e10f
+_id: req_23243820f7474274b7d8d1dc02fb3dae
 type: Request
-parentId: fld_a742b19795ed45ccaaaba348511472b8
-modified: 1691975591430
-created: 1691975591430
-url: "{{ _.base_url }}/api/users/paginate"
-name: Paginate users
+parentId: fld_676749895330426db7d5c45dc53f2912
+modified: 1692066888216
+created: 1692066888216
+url: "{{ _.base_url }}/api/users"
+name: List users
 description: ""
 method: GET
 body: {}
@@ -29,7 +29,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1691975591430
+metaSortKey: -1692066888216
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

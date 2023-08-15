@@ -1,8 +1,8 @@
-_id: req_de2b7ec46e6c4ebc9a13f21a125d7294
+_id: req_0bc74a6bfdd849e789829163d104f551
 type: Request
-parentId: fld_a742b19795ed45ccaaaba348511472b8
-modified: 1691975591432
-created: 1691975591432
+parentId: fld_676749895330426db7d5c45dc53f2912
+modified: 1692066888218
+created: 1692066888218
 url: "{{ _.base_url }}/api/users/{{ _.user_id }}"
 name: Edit user
 description: ""
@@ -11,13 +11,20 @@ body:
   mimeType: application/json
   text: |-
     {
-      "id": "123e4567-e89b-12d3-a456-426614174000",
+      "id": "80526914-5e98-48bd-b995-c329219ed6d0",
       "first_name": "Gabriel",
       "last_name": "Maia",
       "email": "maia@email.com",
       "username": "maia",
       "avatar_url": "https://api.multiavatar.com/gabriel.maia.svg",
       "is_online": true,
+      "roles": [
+        {
+          "id": "4b4a72f4-e448-433e-83a8-665829ce7dd9",
+          "name": "admin",
+          "slug": "ADMIN"
+        }
+      ],
       "inserted_at": "2021-08-01T00:00:00.000Z",
       "updated_at": "2021-08-01T00:00:00.000Z"
     }
@@ -30,7 +37,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1691975591432
+metaSortKey: -1692066888218
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
