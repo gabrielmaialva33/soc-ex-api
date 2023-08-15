@@ -15,8 +15,8 @@ defmodule SocExApiWeb.RoleJSON do
   @doc """
   Renders a list of roles.
   """
-  def index(%{roles: roles}) do
-    %{data: for(role <- roles, do: data(role))}
+  def list(%{roles: roles}) do
+    for(role <- roles, do: data(role))
   end
 
   @doc """

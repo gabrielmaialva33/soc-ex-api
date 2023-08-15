@@ -6,7 +6,7 @@ defmodule SocExApi.Accounts.User do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias SocExApi.Accounts.User
+  alias SocExApi.Accounts.{User, UserRole, Role}
 
   @required_fields ~w(username first_name last_name email password is_online is_deleted)a
   @optional_fields ~w(avatar_url is_online is_deleted)a
@@ -36,6 +36,9 @@ defmodule SocExApi.Accounts.User do
     field :avatar_url, :string
     field :is_online, :boolean, default: false
     field :is_deleted, :boolean, default: false
+
+    # relationships
+    many_to_many :roles, Role, join_through: UserRole
 
     timestamps()
   end

@@ -39,3 +39,18 @@ Enum.map(["root", "admin", "user"], fn name ->
   %Role{name: name, slug: name |> String.upcase()}
   |> Repo.insert!()
 end)
+
+# create user roles
+alias SocExApi.Accounts.UserRole
+
+# get all users
+users = Repo.all(User)
+
+# get user role
+user_role = Role |> Repo.get_by(name: "user")
+
+# attach user role to all users
+Enum.map(users, fn user ->
+  %UserRole{user_id: user.id, role_id: user_role.id}
+  |> Repo.insert!()
+end)

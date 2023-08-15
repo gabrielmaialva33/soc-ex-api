@@ -13,39 +13,20 @@ defmodule SocExApi.Accounts do
 
   ### Examples
 
-      iex> paginate_users(%Flop{page: 1, page_size: 10})
+      iex> list_users(%Flop{page: 1, page_size: 10})
       {:ok, [%User{}, ...]}
 
-      iex> paginate_users(%Flop{page: 2, page_size: 10})
+      iex> list_users(%Flop{page: 2, page_size: 10})
       {:ok, [%User{}, ...]}
   """
-  @spec paginate_users(map) :: {:ok, {[User.t()], Flop.Meta.t()}} | {:error, Flop.Meta.t()}
-  def paginate_users(flop \\ %Flop{}) do
-    query =
-      from u in User,
-        where: u.is_deleted != true,
-        select: u
-
-    Flop.validate_and_run(query, flop, for: User)
-  end
-
-  @doc """
-  Returns the list of users.
-
-  ## Examples
-
-      iex> list_users()
-      [%User{}, ...]
-
-  """
-  @spec list_users(map) :: {:ok, [User.t()]} | {:error, Flop.Meta.t()}
+  @spec list_users(map) :: {:ok, {[User.t()], Flop.Meta.t()}} | {:error, Flop.Meta.t()}
   def list_users(flop \\ %Flop{}) do
     query =
       from u in User,
         where: u.is_deleted != true,
-        select: u
+        select: u,
+        preload: [:roles]
 
-    # load flop without meta
     Flop.validate_and_run(query, flop, for: User)
   end
 
@@ -67,7 +48,8 @@ defmodule SocExApi.Accounts do
     query =
       from u in User,
         where: u.id == ^id and u.is_deleted != true,
-        select: u
+        select: u,
+        preload: [:roles]
 
     Repo.one!(query)
   end

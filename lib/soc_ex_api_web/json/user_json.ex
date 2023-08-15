@@ -1,6 +1,6 @@
 defmodule SocExApiWeb.UserJSON do
   alias SocExApi.Accounts.User
-  alias SocExApiWeb.PaginationJSOM
+  alias SocExApiWeb.{PaginationJSOM, RoleJSON}
 
   @doc """
   Renders a paginated list of users.
@@ -15,8 +15,8 @@ defmodule SocExApiWeb.UserJSON do
   @doc """
   Renders a list of users.
   """
-  def index(%{users: users, meta: meta}) do
-    %{data: for(user <- users, do: data(user)), pagination: PaginationJSOM.render(meta)}
+  def list(%{users: users}) do
+    for(user <- users, do: data(user))
   end
 
   @doc """
@@ -35,7 +35,8 @@ defmodule SocExApiWeb.UserJSON do
       full_name: user.first_name <> " " <> user.last_name,
       email: user.email,
       username: user.username,
-      is_online: user.is_online
+      is_online: user.is_online,
+      roles: RoleJSON.list(%{roles: user.roles})
     }
   end
 end
