@@ -41,6 +41,13 @@ config :phoenix, :json_library, Jason
 # Use Flop for pagination
 config :flop, repo: SocExApi.Repo, default_limit: 10, max_limit: 100
 
+# Configures Guardian for JWT authentication
+config :soc_ex_api,
+       SocExApi.Guardian,
+       issuer: "soc_ex_api",
+       ttl: {30, :days},
+       secret_key: "some_secret_key"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{config_env()}.exs"
+import_config("#{config_env()}.exs")

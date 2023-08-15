@@ -26,6 +26,10 @@ defmodule SocExApiWeb.RoleJSON do
     %{data: data(role)}
   end
 
+  def render(%{role: role}) do
+    data(role)
+  end
+
   defp data(%Role{} = role) do
     %{
       id: role.id,

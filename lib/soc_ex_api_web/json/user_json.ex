@@ -26,6 +26,10 @@ defmodule SocExApiWeb.UserJSON do
     %{data: data(user)}
   end
 
+  def render(%{user: user}) do
+    data(user)
+  end
+
   defp data(%User{} = user) do
     %{
       id: user.id,

@@ -48,6 +48,7 @@ defmodule SocExApi.MixProject do
       {:plug_cowboy, "~> 2.6"},
       {:argon2_elixir, "~> 3.1"},
       {:flop, "~> 0.22"},
+      {:guardian, "~> 2.3"},
       # development
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
       {:ecto_psql_extras, "~> 0.7.12", only: [:dev, :test]},

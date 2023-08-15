@@ -5,10 +5,17 @@ defmodule SocExApiWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :authenticated do
+    plug SocExApiWeb.Plug.AuthAccessPipeline
+  end
+
   scope "/api", SocExApiWeb do
     pipe_through :api
 
-    # Accounts
+    post "/sign_in", AuthController, :sign_in
+
+    pipe_through :authenticated
+
     resources "/users", UserController, except: [:new, :edit]
     resources "/roles", RoleController, except: [:new, :edit, :create, :update, :delete]
   end

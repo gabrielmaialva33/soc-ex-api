@@ -119,6 +119,34 @@ defmodule SocExApi.Accounts do
     User.changeset(user, attrs)
   end
 
+  @doc """
+  Confirms a user's password.
+  """
+  @spec confirm_password(String.t(), String.t()) :: {:ok, User.t()} | {:error, atom()}
+  def confirm_password(uid, password) do
+    query =
+      from u in User,
+        where: u.is_deleted != true,
+        where: u.email == ^uid or u.username == ^uid,
+        limit: 1,
+        preload: [:roles],
+        select: u
+
+    case Repo.one(query) do
+      nil ->
+        {:error, :user_not_found}
+
+      %User{} = user ->
+        case Argon2.verify_pass(password, user.password_hash) do
+          true ->
+            {:ok, user}
+
+          false ->
+            {:error, :invalid_password}
+        end
+    end
+  end
+
   alias SocExApi.Accounts.Role
 
   @doc """

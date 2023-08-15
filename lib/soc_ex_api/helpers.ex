@@ -4,11 +4,9 @@ defmodule SocExApi.Helpers do
   """
 
   @paging_opts ~w(page page_size search order_by order_directions)
-  @limit_opts ~w(limit offset order_by order_directions)
 
   @doc """
   Parses pagination params from a map.
-
   ### Examples
       iex> SocExApi.Helpers.parse_pagination_params(%{"order_by" => "id, name", "order_directions" => "asc, desc"})
       %{order_by: [:id, :name], order_directions: [:asc, :desc]}
@@ -16,20 +14,22 @@ defmodule SocExApi.Helpers do
   def parse_pagination_params(params) do
     params
     |> Map.take(@paging_opts)
-    |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
-    |> Enum.into(%{})
-    |> parse_order_by
-    |> parse_order_directions
+    |> keys_to_atoms()
+    |> parse_order_by()
+    |> parse_order_directions()
   end
 
-  def parse_limit_params(params) do
-    params
-    |> Map.take(@limit_opts)
-    |> Enum.map(fn {k, v} -> {String.to_atom(k), v} end)
-    |> Enum.into(%{})
-    |> parse_order_by
-    |> parse_order_directions
+  def keys_to_atoms(json) when is_map(json) do
+    Map.new(json, &reduce_keys_to_atoms/1)
   end
+
+  def reduce_keys_to_atoms({key, val}) when is_map(val),
+    do: {String.to_existing_atom(key), keys_to_atoms(val)}
+
+  def reduce_keys_to_atoms({key, val}) when is_list(val),
+    do: {String.to_existing_atom(key), Enum.map(val, &keys_to_atoms(&1))}
+
+  def reduce_keys_to_atoms({key, val}), do: {String.to_existing_atom(key), val}
 
   defp parse_order_by(opts) do
     if Map.has_key?(opts, :order_by) do
