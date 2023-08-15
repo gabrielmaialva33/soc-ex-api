@@ -437,6 +437,10 @@ components:
         is_online:
           type: boolean
           example: true
+        roles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Role'
         inserted_at:
           type: string
           format: date-time
@@ -451,13 +455,17 @@ components:
         - email
         - username
       example:
-        id: 123e4567-e89b-12d3-a456-426614174000
+        id: 80526914-5e98-48bd-b995-c329219ed6d0
         first_name: Gabriel
         last_name: Maia
         email: maia@email.com
         username: maia
         avatar_url: https://api.multiavatar.com/gabriel.maia.svg
         is_online: true
+        roles:
+          - id: 4b4a72f4-e448-433e-83a8-665829ce7dd9
+            name: admin
+            slug: ADMIN
         inserted_at: 2021-08-01T00:00:00.000Z
         updated_at: 2021-08-01T00:00:00.000Z
     User.Create:
