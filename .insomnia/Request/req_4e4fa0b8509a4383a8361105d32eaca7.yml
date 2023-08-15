@@ -18,12 +18,12 @@ body:
       "password": "Soc@551238",
       "password_confirmation": "Soc@551238"
     }
-parameters: []
+parameters: [ ]
 headers:
   - name: Content-Type
     disabled: false
     value: application/json
-authentication: {}
+authentication: { }
 metaSortKey: -1692066888217
 isPrivate: false
 settingStoreCookies: true
