@@ -4,6 +4,7 @@ defmodule SocExApi.Accounts.User do
   """
 
   use Ecto.Schema
+  use Flop
   import Ecto.Changeset
 
   alias SocExApi.Accounts.{User, UserRole, Role}
@@ -68,12 +69,12 @@ defmodule SocExApi.Accounts.User do
     |> validate_format(:password, ~r/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
     |> unique_constraint(:email)
     |> unique_constraint(:username)
-    |> password_hash
-    |> generate_avatar_url
+    |> put_password_hash
+    |> put_avatar_url
   end
 
-  @spec password_hash(Ecto.Changeset.t()) :: Ecto.Changeset.t()
-  defp password_hash(changeset) do
+  @spec put_password_hash(Ecto.Changeset.t()) :: Ecto.Changeset.t()
+  defp put_password_hash(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{password: password}} ->
         put_change(changeset, :password_hash, Argon2.hash_pwd_salt(password, salt_len: 32))
@@ -83,8 +84,8 @@ defmodule SocExApi.Accounts.User do
     end
   end
 
-  @spec generate_avatar_url(Ecto.Changeset.t()) :: Ecto.Changeset.t()
-  defp generate_avatar_url(changeset) do
+  @spec put_avatar_url(Ecto.Changeset.t()) :: Ecto.Changeset.t()
+  defp put_avatar_url(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{first_name: first_name, last_name: last_name}} ->
         put_change(
