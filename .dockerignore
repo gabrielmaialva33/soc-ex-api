@@ -1,14 +1,31 @@
-_build/
-deps/
-.elixir_ls/
 .git
-.github
 .gitignore
 .editorconfig
-.circleci
-helm/*
-terragrunt.hcl
-README.md
-docker-compose*
 .idea
+.travis.yml
+.insomnia
 .vscode
+
+# Elixir
+_build
+.elixir_ls
+deps
+
+# Project-specific
+resources
+dev
+priv
+test
+README.md
+LICENCE.md
+soc-ex-api.yaml
+
+# Docker
+.dockerignore
+Dockerfile
+docker-compose*
+
+# File types
+tmp
+erl_crash.dump
+*.ez
