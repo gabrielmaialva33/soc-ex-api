@@ -5,7 +5,7 @@ config :soc_ex_api, SocExApi.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
-  database: "soc_ex_api_dev",
+  database: "soc_ex_dev",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
