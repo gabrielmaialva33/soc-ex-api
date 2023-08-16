@@ -1,0 +1,20 @@
+_id: env_ed41e032b84f41e1a61180ad8f4562ac
+type: Environment
+parentId: env_46b9040328571f2c39ae1bacbb785ff6eca3befd
+modified: 1692155194814
+created: 1692155155185
+name: OpenAPI env localhost:4000
+data:
+  scheme: http
+  base_path: ""
+  host: localhost:4000
+  bearerToken: bearerToken
+dataPropertyOrder:
+  "&":
+    - scheme
+    - base_path
+    - host
+    - bearerToken
+color: "#db39c5"
+isPrivate: false
+metaSortKey: 1692155155185

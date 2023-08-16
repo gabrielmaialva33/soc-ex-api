@@ -1,15 +1,15 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1692066878231
+modified: 1692155240836
 created: 1683563734321
 fileName: Soc Ex
 contents: |
   openapi: 3.0.3
   info:
-    title: Soc Ex API
+    title: Soc Ex
     version: 1.0.0
-    description: Documentation for the Soc Ex API
+    description: Api documentation for Soc Ex
     contact:
       name: Gabriel M.
       email: gabrielmaialva33@gmail.com
@@ -21,11 +21,65 @@ contents: |
       description: Development server
 
   tags:
+    - name: Auth
+      description: Authentication
     - name: Users
       description: User management
     - name: Roles
       description: Role management
   paths:
+    /api/sign_in:
+      post:
+        summary: Sign in
+        description: Sign in with username or email and password
+        tags:
+          - Auth
+        operationId: sign_in
+        parameters:
+          - in: header
+            name: Content-Type
+            schema:
+              type: string
+              default: application/json
+            required: true
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignIn'
+        responses:
+          '200':
+            description: User signed in
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    user:
+                      $ref: '#/components/schemas/User'
+                    token:
+                      type: string
+                      example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9
+          '400':
+            description: Bad Request
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+          '401':
+            description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+          '500':
+            description: Internal Server Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+
     /api/users:
       get:
         summary: List users
@@ -417,6 +471,18 @@ contents: |
         scheme: bearer
         bearerFormat: JWT
     schemas:
+      SignIn:
+        type: object
+        properties:
+          uid:
+            type: string
+            example: maia
+            description: User username or email
+          password:
+            type: string
+            example: Soc@551238
+        example: { uid: maia, password: Soc@551238 }
+
       User:
         type: object
         properties:

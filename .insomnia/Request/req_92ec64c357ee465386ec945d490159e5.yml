@@ -1,0 +1,30 @@
+_id: req_92ec64c357ee465386ec945d490159e5
+type: Request
+parentId: fld_43c063b6471c4804aa12ac4ff44202d2
+modified: 1692155155229
+created: 1692155155229
+url: "{{ _.base_url }}/api/sign_in"
+name: Sign in
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "uid": "maia",
+      "password": "Soc@551238"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: application/json
+authentication: {}
+metaSortKey: -1692155155229
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

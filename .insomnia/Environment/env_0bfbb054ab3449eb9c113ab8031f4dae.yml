@@ -1,18 +1,20 @@
-_id: env_7b7c095586be42fe86753179bc106c95
+_id: env_0bfbb054ab3449eb9c113ab8031f4dae
 type: Environment
 parentId: env_46b9040328571f2c39ae1bacbb785ff6eca3befd
-modified: 1692155185357
-created: 1691643983176
-name: Development server
+modified: 1692155210509
+created: 1692155155214
+name: OpenAPI env api.mrootx.shop
 data:
   scheme: https
   base_path: ""
   host: api.mrootx.shop
+  bearerToken: bearerToken
 dataPropertyOrder:
   "&":
     - scheme
     - base_path
     - host
-color: "#1f93ff"
+    - bearerToken
+color: "#cdc71d"
 isPrivate: false
-metaSortKey: 1691643983176
+metaSortKey: 1692155155214
