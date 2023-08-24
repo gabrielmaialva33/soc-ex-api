@@ -4,7 +4,6 @@ defmodule SocExApi.Accounts.User do
   """
 
   use Ecto.Schema
-  use Flop
   import Ecto.Changeset
 
   alias SocExApi.Accounts.{User, UserRole, Role}
