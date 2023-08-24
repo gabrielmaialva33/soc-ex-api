@@ -1,10 +1,10 @@
-_id: req_bdb4695c50df41a6b9fda189a836b1a4
+_id: req_0ba622caa3a74bf0ae6339e070389a1c
 type: Request
-parentId: fld_0b771d755a7d4cbb8b458861005fc3de
-modified: 1692155155238
-created: 1692155155238
-url: "{{ _.base_url }}/api/roles"
-name: List roles
+parentId: fld_316a846f0f7b404c8b2bc6a56d985a4b
+modified: 1692917830691
+created: 1692917830691
+url: "{{ _.base_url }}/api/users"
+name: List users
 description: ""
 method: GET
 body: {}
@@ -17,10 +17,10 @@ parameters:
     value: "10"
   - name: order_by
     disabled: true
-    value: name
+    value: first_name,last_name,username,email
   - name: order_directions
     disabled: true
-    value: asc
+    value: asc,asc,desc,desc
 headers:
   - name: Content-Type
     disabled: false
@@ -29,7 +29,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1692155155238
+metaSortKey: -1692917830691
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
