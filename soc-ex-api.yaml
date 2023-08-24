@@ -10,7 +10,7 @@ info:
 servers:
   - url: http://localhost:4000
     description: Local server
-  - url: backend.alucard.fun
+  - url: https://backend.alucard.fun
     description: Development server
 
 tags:
@@ -469,12 +469,12 @@ components:
       properties:
         uid:
           type: string
-          example: maia
+          example: admin
           description: User username or email
         password:
           type: string
           example: Soc@551238
-      example: { uid: maia, password: Soc@551238 }
+      example: { uid: admin, password: Soc@551238 }
 
     User:
       type: object
