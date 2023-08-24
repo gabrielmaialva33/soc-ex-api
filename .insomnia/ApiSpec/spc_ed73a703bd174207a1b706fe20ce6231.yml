@@ -1,7 +1,7 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1692155240836
+modified: 1692917829045
 created: 1683563734321
 fileName: Soc Ex
 contents: |
@@ -17,7 +17,7 @@ contents: |
   servers:
     - url: http://localhost:4000
       description: Local server
-    - url: https://api.mrootx.shop
+    - url: https://backend.alucard.fun
       description: Development server
 
   tags:
@@ -476,12 +476,12 @@ contents: |
         properties:
           uid:
             type: string
-            example: maia
+            example: admin
             description: User username or email
           password:
             type: string
             example: Soc@551238
-        example: { uid: maia, password: Soc@551238 }
+        example: { uid: admin, password: Soc@551238 }
 
       User:
         type: object

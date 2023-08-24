@@ -1,12 +1,13 @@
 _id: env_46b9040328571f2c39ae1bacbb785ff6eca3befd
 type: Environment
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1691643946545
+modified: 1692917084529
 created: 1683563734355
 name: Base Environment
 data:
   base_url: "{{ scheme }}://{{ host }}{{ base_path }}"
-  bearerToken: ""
+  bearerToken: "{% response 'body', 'req_d3bb8d057f8a4d6fada591974aa1a82c',
+    'b64::JC5hdXRoLnRva2Vu::46b', 'never', 60 %}"
 dataPropertyOrder:
   "&":
     - base_url
