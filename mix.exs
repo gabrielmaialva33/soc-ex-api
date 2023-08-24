@@ -36,7 +36,7 @@ defmodule SocExApi.MixProject do
     [
       {:phoenix, "~> 1.7.7"},
       {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.10"},
+      {:ecto_sql, "~> 3.10.2"},
       {:postgrex, "~> 0.17.2"},
       {:phoenix_live_dashboard, "~> 0.8.1"},
       {:swoosh, "~> 1.11.5"},
@@ -51,7 +51,7 @@ defmodule SocExApi.MixProject do
       {:guardian, "~> 2.3"},
       # development
       {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:ecto_psql_extras, "~> 0.7.12", only: [:dev, :test]},
+      {:ecto_psql_extras, "~> 0.7.13", only: [:dev, :test]},
       # test
       {:ex_machina, "~> 2.7", only: [:dev, :test]},
       {:faker, "~> 0.17", only: [:dev, :test]}

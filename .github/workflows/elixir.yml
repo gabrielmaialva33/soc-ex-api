@@ -39,7 +39,7 @@ jobs:
 
         run: |
           echo "$PRIVATE_KEY" > private_key && chmod 400 private_key
-          ssh -o StrictHostKeyChecking=no -i private_key soc_ex@20.197.248.21 '
+          ssh -o StrictHostKeyChecking=no -i private_key alucard@20.206.240.160 '
           DIR=/home/soc_ex/soc-ex-api
           cd /home/soc_ex
           source ~/.profile && source ~/.bashrc &&
