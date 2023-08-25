@@ -72,6 +72,48 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Api.Error'
+  /api/sign_up:
+    post:
+      summary: Sign up
+      description: Sign up with first name, last name, email, username and password
+      tags:
+        - Auth
+      operationId: sign_up
+      parameters:
+        - in: header
+          name: Content-Type
+          schema:
+            type: string
+            default: application/json
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User.Create'
+      responses:
+        '201':
+          description: User signed up
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    $ref: '#/components/schemas/User'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Api.Error'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Api.Error'
 
   /api/users:
     get:
