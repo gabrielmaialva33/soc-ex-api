@@ -13,6 +13,7 @@ defmodule SocExApiWeb.Router do
     pipe_through :api
 
     post "/sign_in", AuthController, :sign_in
+    post "/sign_up", UserController, :create
 
     pipe_through :authenticated
 

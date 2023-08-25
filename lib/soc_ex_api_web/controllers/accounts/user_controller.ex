@@ -1,5 +1,6 @@
 defmodule SocExApiWeb.UserController do
   use SocExApiWeb, :controller
+  use Goal
 
   alias SocExApi.Accounts
   alias SocExApi.Accounts.User
@@ -16,11 +17,19 @@ defmodule SocExApiWeb.UserController do
   end
 
   def create(conn, user_params) do
-    with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", ~p"/api/users/#{user}")
-      |> render(:show, user: user)
+    # with {:ok, %User{} = user} <- Accounts.create_user(user_params) do
+    #   conn
+    #   |> put_status(:created)
+    #   |> put_resp_header("location", ~p"/api/users/#{user}")
+    #   |> render(:show, user: user)
+    # end
+    with {:ok, attrs} <- validate(:create, user_params) do
+      with {:ok, %User{} = user} <- Accounts.create_user(attrs) do
+        conn
+        |> put_status(:created)
+        |> put_resp_header("location", ~p"/api/users/#{user}")
+        |> render(:show, user: user)
+      end
     end
   end
 
@@ -43,5 +52,14 @@ defmodule SocExApiWeb.UserController do
     with {:ok, %User{}} <- Accounts.delete_user(user) do
       send_resp(conn, :no_content, "")
     end
+  end
+
+  defparams :create do
+    required(:first_name, :string, min_length?: 1, max_length?: 40)
+    required(:last_name, :string, min_length?: 1, max_length?: 40)
+    required(:username, :string, min_length?: 1, max_length?: 40)
+    required(:email, :string, format?: ~r/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
+    required(:password, :string, format?: ~r/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+    required(:password_confirmation, :string, equal?: :password)
   end
 end
