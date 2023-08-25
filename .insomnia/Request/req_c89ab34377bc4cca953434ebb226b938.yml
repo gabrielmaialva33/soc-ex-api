@@ -1,10 +1,10 @@
-_id: req_3ae31b358c43484ebed056acefec30fc
+_id: req_c89ab34377bc4cca953434ebb226b938
 type: Request
-parentId: fld_316a846f0f7b404c8b2bc6a56d985a4b
-modified: 1692917830692
-created: 1692917830692
-url: "{{ _.base_url }}/api/users"
-name: Create user
+parentId: fld_06d39df42fcc46fbacba9134f67298c8
+modified: 1692927059605
+created: 1692927059605
+url: "{{ _.base_url }}/api/sign_up"
+name: Sign up
 description: ""
 method: POST
 body:
@@ -24,7 +24,7 @@ headers:
     disabled: false
     value: application/json
 authentication: {}
-metaSortKey: -1692917830692
+metaSortKey: -1692927059605
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

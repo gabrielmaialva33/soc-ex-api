@@ -1,11 +1,12 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1692917829045
+modified: 1692927046669
 created: 1683563734321
 fileName: Soc Ex
-contents: |
+contents: >
   openapi: 3.0.3
+
   info:
     title: Soc Ex
     version: 1.0.0
@@ -69,6 +70,48 @@ contents: |
                   $ref: '#/components/schemas/Api.Error'
           '401':
             description: Unauthorized
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+          '500':
+            description: Internal Server Error
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Api.Error'
+    /api/sign_up:
+      post:
+        summary: Sign up
+        description: Sign up with first name, last name, email, username and password
+        tags:
+          - Auth
+        operationId: sign_up
+        parameters:
+          - in: header
+            name: Content-Type
+            schema:
+              type: string
+              default: application/json
+            required: true
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User.Create'
+        responses:
+          '201':
+            description: User signed up
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    user:
+                      $ref: '#/components/schemas/User'
+          '400':
+            description: Bad Request
             content:
               application/json:
                 schema:
