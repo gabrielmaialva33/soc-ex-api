@@ -30,8 +30,26 @@ defmodule SocExApiWeb.AuthController do
     end
   end
 
+  def sign_up(conn, user_params) do
+    with {:ok, attrs} <- validate(:sign_up, user_params) do
+      with {:ok, %User{} = user} <- Accounts.create_user(attrs) do
+        {:ok, jwt, claims} = Guardian.encode_and_sign(user)
+        render(conn, :sign_up, %{user: user, jwt: jwt, claims: claims})
+      end
+    end
+  end
+
   defparams :sign_in do
     required(:uid, :string)
     required(:password, :string)
+  end
+
+  defparams :sign_up do
+    required(:first_name, :string, min_length?: 1, max_length?: 40)
+    required(:last_name, :string, min_length?: 1, max_length?: 40)
+    required(:username, :string, min_length?: 1, max_length?: 40)
+    required(:email, :string, format?: ~r/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/)
+    required(:password, :string, format?: ~r/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/)
+    required(:password_confirmation, :string, equal?: :password)
   end
 end

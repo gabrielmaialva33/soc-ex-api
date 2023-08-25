@@ -40,6 +40,7 @@ defmodule SocExApiWeb.UserJSON do
       email: user.email,
       username: user.username,
       is_online: user.is_online,
+      # check if user has role
       roles: RoleJSON.list(%{roles: user.roles})
     }
   end

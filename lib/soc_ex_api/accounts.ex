@@ -4,9 +4,9 @@ defmodule SocExApi.Accounts do
   """
 
   import Ecto.Query, warn: false
-  alias SocExApi.Repo
 
-  alias SocExApi.Accounts.User
+  alias SocExApi.Repo
+  alias SocExApi.Accounts.{User, UserRole, Role}
 
   @doc """
   Returns a paginated list of users.
@@ -67,9 +67,16 @@ defmodule SocExApi.Accounts do
 
   """
   def create_user(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
-    |> Repo.insert()
+    with {:ok, %User{} = user} <- User.changeset(%User{}, attrs) |> Repo.insert() do
+      # get user role
+      user_role = Role |> Repo.get_by(name: "user")
+
+      # attach user role to user
+      %UserRole{user_id: user.id, role_id: user_role.id}
+      |> Repo.insert!()
+
+      {:ok, user |> Repo.preload(:roles)}
+    end
   end
 
   @doc """
