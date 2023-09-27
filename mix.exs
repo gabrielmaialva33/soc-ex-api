@@ -39,7 +39,7 @@ defmodule SocExApi.MixProject do
       {:ecto_sql, "~> 3.10.2"},
       {:postgrex, "~> 0.17.2"},
       {:phoenix_live_dashboard, "~> 0.8.1"},
-      {:swoosh, "~> 1.11.5"},
+      {:swoosh, "~> 1.12.0"},
       {:finch, "~> 0.16"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
