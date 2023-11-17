@@ -35,7 +35,7 @@ defmodule SocExApiWeb.Router do
 
       live_dashboard "/dashboard",
         metrics: SocExApiWeb.Telemetry,
-        metrics_history: {MyApp.MetricsStorage, :metrics_history, []},
+        metrics_history: {SocExApiWeb.MetricsStorage, :metrics_history, []},
         ecto_repos: [SocExApiWeb.Repo],
         ecto_psql_extras_options: [long_running_queries: [threshold: "200 milliseconds"]]
 

@@ -34,25 +34,26 @@ defmodule SocExApi.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, "~> 1.7.7"},
-      {:phoenix_ecto, "~> 4.4"},
+      {:phoenix, "~> 1.7.10"},
+      {:phoenix_ecto, "~> 4.4.3"},
       {:ecto_sql, "~> 3.10.2"},
-      {:postgrex, "~> 0.17.2"},
-      {:phoenix_live_dashboard, "~> 0.8.1"},
-      {:swoosh, "~> 1.11.5"},
+      {:postgrex, "~> 0.17.3"},
+      {:phoenix_live_dashboard, "~> 0.8.3"},
+      {:swoosh, "~> 1.14.0"},
       {:finch, "~> 0.16"},
       {:telemetry_metrics, "~> 0.6"},
       {:telemetry_poller, "~> 1.0"},
       {:gettext, "~> 0.23.1"},
       {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.6"},
-      {:argon2_elixir, "~> 3.1"},
-      {:flop, "~> 0.22"},
+      {:argon2_elixir, "~> 4.0.0"},
+      {:flop, "~> 0.23.0"},
       {:guardian, "~> 2.3"},
       {:goal, "~> 0.3"},
+      {:circular_buffer, "~> 0.4.0"},
       # development
-      {:credo, "~> 1.6", only: [:dev, :test], runtime: false},
-      {:ecto_psql_extras, "~> 0.7.13", only: [:dev, :test]},
+      {:credo, "~> 1.7.1", only: [:dev, :test], runtime: false},
+      {:ecto_psql_extras, "~> 0.7.14", only: [:dev, :test]},
       # test
       {:ex_machina, "~> 2.7", only: [:dev, :test]},
       {:faker, "~> 0.17", only: [:dev, :test]}
