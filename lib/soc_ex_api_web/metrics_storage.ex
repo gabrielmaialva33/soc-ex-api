@@ -1,7 +1,8 @@
-@moduledoc """
-Metrics storage.
-"""
 defmodule SocExApiWeb.MetricsStorage do
+  @moduledoc """
+  This module is responsible for storing the metrics data
+  """
+
   use GenServer
 
   @history_buffer_size 50
