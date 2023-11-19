@@ -8,7 +8,7 @@ defmodule SocExApi.Accounts.Role do
 
   alias SocExApi.Accounts.Role
 
-  @required_fields ~w(name slug)a
+  @required_fields ~w(name)a
   @optional_fields ~w()a
   @sortable_fields ~w(name slug)a
 
@@ -41,6 +41,7 @@ defmodule SocExApi.Accounts.Role do
     |> cast(attrs, @required_fields ++ @optional_fields)
     |> validate_required(@required_fields)
     |> validate_changeset
+    |> set_slug
   end
 
   @spec validate_changeset(Ecto.Changeset.t()) :: Ecto.Changeset.t()
@@ -51,5 +52,12 @@ defmodule SocExApi.Accounts.Role do
     |> validate_format(:name, ~r/^[a-z0-9_]+$/)
     |> validate_format(:slug, ~r/^[a-z0-9_]+$/)
     |> unique_constraint(:name)
+  end
+
+  defp set_slug(changeset) do
+    case get_change(changeset, :name) do
+      nil -> changeset
+      name -> put_change(changeset, :slug, String.upcase(name))
+    end
   end
 end
