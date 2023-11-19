@@ -68,13 +68,7 @@ defmodule SocExApi.Accounts do
   """
   def create_user(attrs \\ %{}) do
     with {:ok, %User{} = user} <- User.changeset(%User{}, attrs) |> Repo.insert() do
-      # get user role
-      user_role = Role |> Repo.get_by(name: "user")
-
-      # attach user role to user
-      %UserRole{user_id: user.id, role_id: user_role.id}
-      |> Repo.insert!()
-
+      user |> attach_role_by_name("user")
       {:ok, user |> Repo.preload(:roles)}
     end
   end
@@ -254,5 +248,24 @@ defmodule SocExApi.Accounts do
   """
   def change_role(%Role{} = role, attrs \\ %{}) do
     Role.changeset(role, attrs)
+  end
+
+  def get_role_by_name(name) do
+    query =
+      from r in Role,
+        where: r.name == ^name,
+        select: r
+
+    Repo.one(query)
+  end
+
+  def attach_user_role(%User{} = user, %Role{} = role) do
+    %UserRole{user_id: user.id, role_id: role.id}
+    |> Repo.insert!()
+  end
+
+  def attach_role_by_name(%User{} = user, role_name) do
+    role = get_role_by_name(role_name)
+    attach_user_role(user, role)
   end
 end

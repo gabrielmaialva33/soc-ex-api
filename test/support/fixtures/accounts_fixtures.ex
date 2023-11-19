@@ -11,13 +11,13 @@ defmodule SocExApi.AccountsFixtures do
     {:ok, user} =
       attrs
       |> Enum.into(%{
-        username: "some username",
-        first_name: "some first_name",
-        last_name: "some last_name",
-        email: "some email",
-        password_hash: "some password_hash",
-        is_online: true,
-        is_deleted: true
+        username: Faker.Internet.user_name(),
+        first_name: Faker.Person.first_name(),
+        last_name: Faker.Person.last_name(),
+        email: Faker.Internet.email(),
+        password: "Some@Password123",
+        is_online: Faker.random_uniform() > Faker.random_uniform(),
+        is_deleted: false
       })
       |> SocExApi.Accounts.create_user()
 
@@ -31,8 +31,8 @@ defmodule SocExApi.AccountsFixtures do
     {:ok, role} =
       attrs
       |> Enum.into(%{
-        name: "some name",
-        slug: "some slug"
+        name: Faker.Lorem.word(),
+        slug: Faker.Lorem.word() |> String.upcase()
       })
       |> SocExApi.Accounts.create_role()
 
