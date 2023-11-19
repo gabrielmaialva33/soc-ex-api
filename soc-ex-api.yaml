@@ -10,7 +10,7 @@ info:
 servers:
   - url: http://localhost:4000
     description: Local server
-  - url: https://backend.alucard.fun
+  - url: https://api.alucard.fun
     description: Development server
 
 
