@@ -1,9 +1,9 @@
 _id: spc_ed73a703bd174207a1b706fe20ce6231
 type: ApiSpec
 parentId: wrk_08aac754bd244816a6671f7ff3e801d9
-modified: 1692927046669
+modified: 1700399461658
 created: 1683563734321
-fileName: Soc Ex
+fileName: SocExApi
 contents: >
   openapi: 3.0.3
 
@@ -18,16 +18,10 @@ contents: >
   servers:
     - url: http://localhost:4000
       description: Local server
-    - url: https://backend.alucard.fun
+    - url: https://api.alucard.fun
       description: Development server
 
-  tags:
-    - name: Auth
-      description: Authentication
-    - name: Users
-      description: User management
-    - name: Roles
-      description: Role management
+
   paths:
     /api/sign_in:
       post:
@@ -128,7 +122,7 @@ contents: >
         summary: List users
         description: List all users paginated
         tags:
-          - Users
+          - User
         operationId: list.users
         parameters:
           - in: header
@@ -205,7 +199,7 @@ contents: >
         summary: Create user
         description: Create a new user
         tags:
-          - Users
+          - User
         operationId: create.user
         parameters:
           - in: header
@@ -214,6 +208,8 @@ contents: >
               type: string
               example: application/json
             required: true
+        security:
+          - bearerAuth: [ ]
         requestBody:
           required: true
           content:
@@ -244,7 +240,7 @@ contents: >
         summary: Get user
         description: Get a user by id
         tags:
-          - Users
+          - User
         operationId: get.user
         parameters:
           - in: header
@@ -291,7 +287,7 @@ contents: >
         summary: Edit user
         description: Update a user by id
         tags:
-          - Users
+          - User
         operationId: edit.user
         parameters:
           - in: header
@@ -344,7 +340,7 @@ contents: >
         summary: Delete user
         description: Delete a user by id
         tags:
-          - Users
+          - User
         operationId: delete.user
         parameters:
           - in: header
@@ -389,7 +385,7 @@ contents: >
         summary: List roles
         description: List all roles paginated
         tags:
-          - Roles
+          - Role
         operationId: list.roles
         parameters:
           - in: header
@@ -464,7 +460,7 @@ contents: >
         summary: Get role
         description: Get a role by id
         tags:
-          - Roles
+          - Role
         operationId: get.role
         parameters:
           - in: header
@@ -507,6 +503,13 @@ contents: >
               application/json:
                 schema:
                   $ref: '#/components/schemas/Api.Error'
+  tags:
+    - name: Auth
+      description: Authentication
+    - name: User
+      description: User management
+    - name: Role
+      description: Role management
   components:
     securitySchemes:
       bearerAuth:

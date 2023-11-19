@@ -1,8 +1,8 @@
 _id: wrk_08aac754bd244816a6671f7ff3e801d9
 type: Workspace
 parentId: null
-modified: 1691643922296
+modified: 1700399461659
 created: 1683563734321
-name: soc_ex_api.git
+name: SocExApi
 description: "### Documentation for the SocEx API"
 scope: design

@@ -1,10 +1,10 @@
-_id: req_642703b767c24d86815942bca65a38db
+_id: req_cf949f8fea064683bd9b65712a98092a
 type: Request
-parentId: fld_2337c73f398041d9b1a23d5c9f5f2c4c
-modified: 1692927059609
-created: 1692927059609
-url: "{{ _.base_url }}/api/users/{{ _.user_id }}"
-name: Get user
+parentId: fld_cb4fc763424740c2bde5b6149b8e8e98
+modified: 1700399329264
+created: 1700399329264
+url: "{{ _.base_url }}/api/roles/{{ _.role_id }}"
+name: Get role
 description: ""
 method: GET
 body: {}
@@ -17,7 +17,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1692927059609
+metaSortKey: -1700399329264
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

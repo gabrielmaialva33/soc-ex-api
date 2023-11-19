@@ -1,8 +1,8 @@
-_id: req_5f0d9f0d0e4041e08f7ad97d9fcd0e21
+_id: req_5690a17921cd40fc8ed7bc8d48efcec7
 type: Request
-parentId: fld_2337c73f398041d9b1a23d5c9f5f2c4c
-modified: 1692927059610
-created: 1692927059610
+parentId: fld_b51063a6a4454ec583de698394843198
+modified: 1700399329261
+created: 1700399329261
 url: "{{ _.base_url }}/api/users/{{ _.user_id }}"
 name: Edit user
 description: ""
@@ -37,7 +37,7 @@ authentication:
   type: bearer
   token: "{{ _.bearerToken }}"
   prefix: ""
-metaSortKey: -1692927059610
+metaSortKey: -1700399329261
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true

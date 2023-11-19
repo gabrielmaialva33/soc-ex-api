@@ -1,9 +1,9 @@
 _id: env_d3c9d5123e574fd0993ace09d215e16b
 type: Environment
 parentId: env_46b9040328571f2c39ae1bacbb785ff6eca3befd
-modified: 1691644202170
+modified: 1700399417897
 created: 1691643962278
-name: Local serer
+name: Local Server
 data:
   scheme: http
   base_path: ""

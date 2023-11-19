@@ -1,13 +1,13 @@
 _id: env_7b7c095586be42fe86753179bc106c95
 type: Environment
 parentId: env_46b9040328571f2c39ae1bacbb785ff6eca3befd
-modified: 1692915179460
+modified: 1700399426782
 created: 1691643983176
-name: Development server
+name: Development Server
 data:
   scheme: https
   base_path: ""
-  host: backend.alucard.fun
+  host: api.alucard.fun
 dataPropertyOrder:
   "&":
     - scheme

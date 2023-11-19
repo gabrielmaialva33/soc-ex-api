@@ -1,8 +1,8 @@
-_id: req_664146e73a4a42588bae87af20f90c58
+_id: req_a4d4d7f4987e4ee486451827646d1ada
 type: Request
-parentId: fld_06d39df42fcc46fbacba9134f67298c8
-modified: 1692927093674
-created: 1692927059419
+parentId: fld_b97a934da4ab4ebd9d50df0ddd39afb7
+modified: 1700399329254
+created: 1700399329254
 url: "{{ _.base_url }}/api/sign_in"
 name: Sign in
 description: ""
@@ -11,7 +11,7 @@ body:
   mimeType: application/json
   text: |-
     {
-      "uid": "root",
+      "uid": "admin",
       "password": "Soc@551238"
     }
 parameters: []
@@ -20,7 +20,7 @@ headers:
     disabled: false
     value: application/json
 authentication: {}
-metaSortKey: -1692927059419
+metaSortKey: -1700399329254
 isPrivate: false
 settingStoreCookies: true
 settingSendCookies: true
