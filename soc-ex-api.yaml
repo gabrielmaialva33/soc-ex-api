@@ -13,13 +13,7 @@ servers:
   - url: https://backend.alucard.fun
     description: Development server
 
-tags:
-  - name: Auth
-    description: Authentication
-  - name: User
-    description: User management
-  - name: Role
-    description: Role management
+
 paths:
   /api/sign_in:
     post:
@@ -206,6 +200,8 @@ paths:
             type: string
             example: application/json
           required: true
+      security:
+        - bearerAuth: [ ]
       requestBody:
         required: true
         content:
@@ -499,6 +495,13 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Api.Error'
+tags:
+  - name: Auth
+    description: Authentication
+  - name: User
+    description: User management
+  - name: Role
+    description: Role management
 components:
   securitySchemes:
     bearerAuth:
