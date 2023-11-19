@@ -4,8 +4,16 @@ defmodule SocExApi.Repo.Migrations.CreateUsersRoles do
   def change do
     create table(:users_roles, primary_key: false) do
       add :id, :binary_id, primary_key: true, default: fragment("uuid_generate_v4()"), null: false
-      add :user_id, references(:users, type: :binary_id), null: false, on_delete: :delete_all, on_replace: :delete
-      add :role_id, references(:roles, type: :binary_id), null: false, on_delete: :delete_all, on_replace: :delete
+
+      add :user_id, references(:users, type: :binary_id),
+        null: false,
+        on_delete: :delete_all,
+        on_replace: :delete
+
+      add :role_id, references(:roles, type: :binary_id),
+        null: false,
+        on_delete: :delete_all,
+        on_replace: :delete
 
       timestamps()
     end

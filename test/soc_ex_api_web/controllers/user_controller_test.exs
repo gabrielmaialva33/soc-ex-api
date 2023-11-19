@@ -23,7 +23,15 @@ defmodule SocExApiWeb.UserControllerTest do
     is_online: false,
     is_deleted: false
   }
-  @invalid_attrs %{username: nil, first_name: nil, last_name: nil, email: nil, password_hash: nil, is_online: nil, is_deleted: nil}
+  @invalid_attrs %{
+    username: nil,
+    first_name: nil,
+    last_name: nil,
+    email: nil,
+    password_hash: nil,
+    is_online: nil,
+    is_deleted: nil
+  }
 
   setup %{conn: conn} do
     {:ok, conn: put_req_header(conn, "accept", "application/json")}

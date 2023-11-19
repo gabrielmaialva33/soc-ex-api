@@ -8,7 +8,15 @@ defmodule SocExApi.AccountsTest do
 
     import SocExApi.AccountsFixtures
 
-    @invalid_attrs %{username: nil, first_name: nil, last_name: nil, email: nil, password_hash: nil, is_online: nil, is_deleted: nil}
+    @invalid_attrs %{
+      username: nil,
+      first_name: nil,
+      last_name: nil,
+      email: nil,
+      password_hash: nil,
+      is_online: nil,
+      is_deleted: nil
+    }
 
     test "list_users/0 returns all users" do
       user = user_fixture()
@@ -21,7 +29,15 @@ defmodule SocExApi.AccountsTest do
     end
 
     test "create_user/1 with valid data creates a user" do
-      valid_attrs = %{username: "some username", first_name: "some first_name", last_name: "some last_name", email: "some email", password_hash: "some password_hash", is_online: true, is_deleted: true}
+      valid_attrs = %{
+        username: "some username",
+        first_name: "some first_name",
+        last_name: "some last_name",
+        email: "some email",
+        password_hash: "some password_hash",
+        is_online: true,
+        is_deleted: true
+      }
 
       assert {:ok, %User{} = user} = Accounts.create_user(valid_attrs)
       assert user.username == "some username"
@@ -39,7 +55,16 @@ defmodule SocExApi.AccountsTest do
 
     test "update_user/2 with valid data updates the user" do
       user = user_fixture()
-      update_attrs = %{username: "some updated username", first_name: "some updated first_name", last_name: "some updated last_name", email: "some updated email", password_hash: "some updated password_hash", is_online: false, is_deleted: false}
+
+      update_attrs = %{
+        username: "some updated username",
+        first_name: "some updated first_name",
+        last_name: "some updated last_name",
+        email: "some updated email",
+        password_hash: "some updated password_hash",
+        is_online: false,
+        is_deleted: false
+      }
 
       assert {:ok, %User{} = user} = Accounts.update_user(user, update_attrs)
       assert user.username == "some updated username"

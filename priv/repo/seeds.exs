@@ -10,7 +10,6 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-
 alias SocExApi.Repo
 alias SocExApi.Accounts.User
 alias SocExApi.Accounts.Role
@@ -54,18 +53,18 @@ Enum.map(users, fn user ->
   |> Repo.insert!()
 end)
 
-
 # create default users
 Enum.map(["root", "admin"], fn name ->
-  user = %User{
-    username: name,
-    first_name: name |> String.capitalize(),
-    last_name: name |> String.capitalize() |> String.reverse(),
-    email: name <> "@alucard.fun",
-    password_hash: Argon2.hash_pwd_salt("Soc@551238"),
-    avatar_url: "https://api.multiavatar.com/#{name}.svg",
-  }
-  |> Repo.insert!()
+  user =
+    %User{
+      username: name,
+      first_name: name |> String.capitalize(),
+      last_name: name |> String.capitalize() |> String.reverse(),
+      email: name <> "@alucard.fun",
+      password_hash: Argon2.hash_pwd_salt("Soc@551238"),
+      avatar_url: "https://api.multiavatar.com/#{name}.svg"
+    }
+    |> Repo.insert!()
 
   user_role = Role |> Repo.get_by(name: name)
 
