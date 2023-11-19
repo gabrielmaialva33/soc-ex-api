@@ -63,7 +63,7 @@ jobs:
             echo "No session to kill. 🤷‍"
           fi &&
           # Start the app in a detached tmux session 
-          tmux new-session -d -s soc-ex-api "PORT=4000 mix phx.server" &&
+          tmux new-session -d -s soc-ex-api "PORT=4000 mix phx.server" && mix ecto.drop && mix ecto.create && mix ecto.migrate && mix run priv/repo/seeds.exs &&
           echo "Deployed successfully. 🚀"
           '
           
