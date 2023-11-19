@@ -16,9 +16,9 @@ servers:
 tags:
   - name: Auth
     description: Authentication
-  - name: Users
+  - name: User
     description: User management
-  - name: Roles
+  - name: Role
     description: Role management
 paths:
   /api/sign_in:
@@ -120,7 +120,7 @@ paths:
       summary: List users
       description: List all users paginated
       tags:
-        - Users
+        - User
       operationId: list.users
       parameters:
         - in: header
@@ -197,7 +197,7 @@ paths:
       summary: Create user
       description: Create a new user
       tags:
-        - Users
+        - User
       operationId: create.user
       parameters:
         - in: header
@@ -236,7 +236,7 @@ paths:
       summary: Get user
       description: Get a user by id
       tags:
-        - Users
+        - User
       operationId: get.user
       parameters:
         - in: header
@@ -283,7 +283,7 @@ paths:
       summary: Edit user
       description: Update a user by id
       tags:
-        - Users
+        - User
       operationId: edit.user
       parameters:
         - in: header
@@ -336,7 +336,7 @@ paths:
       summary: Delete user
       description: Delete a user by id
       tags:
-        - Users
+        - User
       operationId: delete.user
       parameters:
         - in: header
@@ -381,7 +381,7 @@ paths:
       summary: List roles
       description: List all roles paginated
       tags:
-        - Roles
+        - Role
       operationId: list.roles
       parameters:
         - in: header
@@ -456,7 +456,7 @@ paths:
       summary: Get role
       description: Get a role by id
       tags:
-        - Roles
+        - Role
       operationId: get.role
       parameters:
         - in: header
