@@ -1,3 +1,6 @@
+@moduledoc """
+Metrics storage.
+"""
 defmodule SocExApiWeb.MetricsStorage do
   use GenServer
 
