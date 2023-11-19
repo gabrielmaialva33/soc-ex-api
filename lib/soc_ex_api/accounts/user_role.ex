@@ -12,7 +12,7 @@ defmodule SocExApi.Accounts.UserRole do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   @type t :: %UserRole{}
-  schema "users_roles" do
+  schema "user_roles" do
     belongs_to :user, User, type: :binary_id
     belongs_to :role, Role, type: :binary_id
 
