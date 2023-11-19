@@ -58,7 +58,7 @@ jobs:
           if [ $(tmux ls | grep soc-ex-api | wc -l) -gt 0 ]
             then
               tmux kill-session -t soc-ex-api &&
-              mix ecto.setup
+              mix ecto.drop && mix ecto.create && mix ecto.migrate && mix run priv/repo/seeds.exs
           else
             echo "No session to kill. 🤷‍"
           fi &&
