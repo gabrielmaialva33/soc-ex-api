@@ -2,6 +2,7 @@ defmodule SocExApi.AccountsTest do
   use SocExApi.DataCase
 
   alias SocExApi.Accounts
+  alias SocExApi.UserFactory
 
   describe "users" do
     alias SocExApi.Accounts.User
@@ -19,32 +20,26 @@ defmodule SocExApi.AccountsTest do
     }
 
     test "list_users/0 returns all users" do
-      user = user_fixture()
-      assert Accounts.list_users() == [user]
+      users = UserFactory.create_many(3,%{is_deleted: false})
+
+      assert {:ok, {data, %Flop.Meta{}}} = Accounts.list_users(%Flop{})
+      assert Enum.sort(users) == Enum.sort(data)
     end
 
     test "get_user!/1 returns the user with given id" do
-      user = user_fixture()
-      assert Accounts.get_user!(user.id) == user
+      user = UserFactory.create(%{is_deleted: false})
+      fetched_user = Accounts.get_user!(user.id)
+      assert user == fetched_user
     end
 
     test "create_user/1 with valid data creates a user" do
-      valid_attrs = %{
-        username: "some username",
-        first_name: "some first_name",
-        last_name: "some last_name",
-        email: "some email",
-        password_hash: "some password_hash",
-        is_online: true,
-        is_deleted: true
-      }
+      valid_attrs = UserFactory.user_factory()
 
       assert {:ok, %User{} = user} = Accounts.create_user(valid_attrs)
-      assert user.username == "some username"
-      assert user.first_name == "some first_name"
-      assert user.last_name == "some last_name"
-      assert user.email == "some email"
-      assert user.password_hash == "some password_hash"
+      assert user.username == valid_attrs.username
+      assert user.first_name == valid_attrs.first_name
+      assert user.last_name == valid_attrs.last_name
+      assert user.email == valid_attrs.email
       assert user.is_online == true
       assert user.is_deleted == true
     end

@@ -8,6 +8,10 @@ defmodule SocExApi.Accounts do
   alias SocExApi.Repo
   alias SocExApi.Accounts.{User, UserRole, Role}
 
+  # ---------------------------------------------------------------------------
+  # User Repo Functions
+  # ---------------------------------------------------------------------------
+
   @doc """
   Returns a paginated list of users.
 
@@ -68,7 +72,9 @@ defmodule SocExApi.Accounts do
   """
   def create_user(attrs \\ %{}) do
     with {:ok, %User{} = user} <- User.changeset(%User{}, attrs) |> Repo.insert() do
-      user |> attach_role_by_name("user")
+      role = get_role_by(:slug, "user")
+      assign_role(user, role)
+
       {:ok, user |> Repo.preload(:roles)}
     end
   end
@@ -148,7 +154,9 @@ defmodule SocExApi.Accounts do
     end
   end
 
-  alias SocExApi.Accounts.Role
+  # ---------------------------------------------------------------------------
+  # Role Repo Functions
+  # ---------------------------------------------------------------------------
 
   @doc """
   Returns the list of roles.
@@ -250,22 +258,36 @@ defmodule SocExApi.Accounts do
     Role.changeset(role, attrs)
   end
 
-  def get_role_by_name(name) do
+  @doc """
+  Returns a role by the given key/value pair.
+
+  ## Examples
+
+      iex> get_role_by(:slug, "user")
+      %Role{}
+
+      iex> get_role_by(:slug, "admin")
+      %Role{}
+  """
+  def get_role_by(key, value) do
     query =
       from r in Role,
-        where: r.name == ^name,
+        where: fragment("lower(?) = ?", field(r, ^key), ^String.downcase(value)),
         select: r
 
     Repo.one(query)
   end
 
-  def attach_user_role(%User{} = user, %Role{} = role) do
-    %UserRole{user_id: user.id, role_id: role.id}
-    |> Repo.insert!()
-  end
+  @doc """
+  Assigns a role to a user.
 
-  def attach_role_by_name(%User{} = user, role_name) do
-    role = get_role_by_name(role_name)
-    attach_user_role(user, role)
+  ## Examples
+
+      iex> assign_role(user, role)
+      %UserRole{}
+  """
+  def assign_role(%User{} = user, %Role{} = role) do
+    user_role = %UserRole{user_id: user.id, role_id: role.id}
+    Repo.insert!(user_role)
   end
 end

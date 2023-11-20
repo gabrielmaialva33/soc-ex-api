@@ -36,17 +36,9 @@ Enum.map(1..20, fn _ ->
   |> Repo.insert!()
 end)
 
-# create roles
-Enum.map(["root", "admin", "user"], fn name ->
-  if Role |> Repo.get_by(name: name) == nil do
-    %Role{name: name, slug: name |> String.upcase()}
-    |> Repo.insert!()
-  end
-end)
-
 # set default role for all users
 users = Repo.all(User)
-user_role = Role |> Repo.get_by(name: "user")
+user_role = Role |> Repo.get_by(slug: "user")
 
 Enum.map(users, fn user ->
   %UserRole{user_id: user.id, role_id: user_role.id}
@@ -66,7 +58,7 @@ Enum.map(["root", "admin"], fn name ->
     }
     |> Repo.insert!()
 
-  user_role = Role |> Repo.get_by(name: name)
+  user_role = Role |> Repo.get_by(slug: "user")
 
   %UserRole{user_id: user.id, role_id: user_role.id} |> Repo.insert!()
 end)
