@@ -24,7 +24,7 @@ defmodule SocExApi.UserFactory do
   end
 
   def user_factory do
-    user = %User{
+    %User{
       username: Faker.Internet.user_name(),
       first_name: Faker.Person.first_name(),
       last_name: Faker.Person.last_name(),
@@ -42,22 +42,46 @@ defmodule SocExApi.UserFactory do
 
     user
     |> User.changeset(attrs)
-    |> Repo.insert!() |> set_roles(opts) |> Repo.preload([:roles]) |> Map.put(:password, nil)
+    |> Repo.insert!()
+    |> set_roles(opts)
+    |> Repo.preload([:roles])
+    |> Map.put(:password, nil)
   end
 
   def create_many(n, attrs \\ %{}) do
     1..n
-    |> Enum.map(fn _ -> create(attrs)
-    end)
+    |> Enum.map(fn _ -> create(attrs) end)
+  end
+
+  def make(attrs \\ %{}) do
+    data = %{
+      username: Faker.Internet.user_name(),
+      first_name: Faker.Person.first_name(),
+      last_name: Faker.Person.last_name(),
+      email: Faker.Internet.email(),
+      is_online: Faker.random_uniform() > Faker.random_uniform(),
+      is_deleted: Faker.random_uniform() > Faker.random_uniform()
+    }
+
+    data = Map.put(data, :password, "Soc@551238")
+    data = Map.merge(data, attrs)
+    data
+  end
+
+  def make_many(n, attrs \\ %{}) do
+    1..n
+    |> Enum.map(fn _ -> make(attrs) end)
   end
 
   defp set_roles(user, opts \\ []) do
     if opts[:roles] do
       roles = opts[:roles]
+
       Enum.each(roles, fn role ->
         role = Repo.get_by(Role, slug: role)
         %UserRole{user_id: user.id, role_id: role.id} |> Repo.insert!()
       end)
+
       user
     else
       user_role = Repo.get_by(Role, slug: "user")

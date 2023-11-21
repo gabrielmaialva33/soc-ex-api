@@ -4,7 +4,6 @@ defmodule SocExApi.Repo.Migrations.PopulateRoles do
   alias SocExApi.Repo
   alias SocExApi.Accounts.Role
 
-
   def up do
     roles = [
       %Role{name: "Admin", slug: "admin"},

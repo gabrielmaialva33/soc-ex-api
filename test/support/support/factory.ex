@@ -6,4 +6,5 @@ defmodule SocExApi.Factory do
 
   use ExMachina.Ecto, repo: SocExApi.Repo
   use SocExApi.UserFactory
+  use SocExApi.RoleFactory
 end

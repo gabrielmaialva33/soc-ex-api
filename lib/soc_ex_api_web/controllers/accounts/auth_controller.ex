@@ -12,7 +12,6 @@ defmodule SocExApiWeb.AuthController do
     with {:ok, attrs} <- validate(:sign_in, auth_params) do
       case Accounts.confirm_password(attrs.uid, attrs.password) do
         {:ok, %User{} = user} ->
-          IO.inspect(user)
           {:ok, jwt, claims} = Guardian.encode_and_sign(user)
           render(conn, :sign_in, %{user: user, jwt: jwt, claims: claims})
 

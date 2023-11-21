@@ -52,12 +52,14 @@ defmodule SocExApi.Accounts.Role do
     |> validate_format(:name, ~r/^[a-z0-9_]+$/)
     |> validate_format(:slug, ~r/^[a-z0-9_]+$/)
     |> unique_constraint(:name)
+    |> unique_constraint(:slug)
   end
 
+  # set slug to downcase on insert and update
   defp set_slug(changeset) do
     case get_change(changeset, :name) do
       nil -> changeset
-      name -> put_change(changeset, :slug, String.upcase(name))
+      name -> put_change(changeset, :slug, String.downcase(name))
     end
   end
 end
